@@ -1,0 +1,36 @@
+<div class="main-categories-container page-width">
+  {% for block in section.blocks %}
+    <div class="category-box__main{% if block.settings.resize_image == true %} category-box__pages{% endif %}"
+     {%- if block.settings.link != blank -%}
+        onclick="location.href='{{ block.settings.link }}';" style="cursor: pointer;"
+      {% endif %}
+    >
+      {% if block.settings.image != blank %}
+        {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          {%- if block.settings.image.width < max_width -%}
+            {%- assign slide_width = block.settings.image.width -%}
+          {%- endif -%}
+        {%- if block.settings.image != blank -%}
+          <img class="hero-fixed-width__image lazyload lazypreload"
+              data-src="{{ img_url }}"
+              data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+              data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+              data-sizes="auto"
+              style="{%- if slide_width <= max_width -%}
+                        {%- assign min_width = slide_width | times: 100 | divided_by: max_width -%}
+                        min-width: {{ min_width }}%;
+                      {%- endif -%}"
+              alt="{{ block.settings.image.alt | escape }}">
+        {%- else -%}
+          <span>
+            {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+            {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+          </span>
+        {%- endif -%}
+        {% if block.settings.cta_label != blank %}
+          <h3>{{ block.settings.cta_label}}</h3>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+  {% endfor %}
+</div>

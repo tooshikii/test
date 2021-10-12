@@ -1,0 +1,88 @@
+{% render 'safe-pay-bar' %}
+<div class="page-width sign-in-mobile">
+    <div class="log-in-mobile">
+        <div class="sign-in-container">
+            <a href="{{ routes.root_url }}" id="logo-login-registration-page">
+                {% render 'logo' %}
+            </a>
+            <div class="form-vertical sign-in-box">
+                <h1>{{ 'custom.login_and_registration_pages.header_registration' | t }}</h1>
+                <p class="sign-in-paragraph-fix-height">{{ 'custom.login_and_registration_pages.text_registration' | t }}</p>
+
+                {%- assign formId = 'RegisterForm' -%}
+                {% form 'create_customer', id: formId %}
+                    {% include 'form-status', form: form, form_id: formId %}
+
+                    <!-- <label for="{{ formId }}-FirstName">{{ 'customer.register.first_name' | t }}</label>
+                    <input class="sign-in-box__input" type="text" name="customer[first_name]"
+                           id="{{ formId }}-FirstName" {% if form.first_name %}value="{{ form.first_name }}"{% endif %}
+                           autocomplete="given-name" aria-required="true" required> -->
+
+                    <!-- <label for="{{ formId }}-LastName">{{ 'customer.register.last_name' | t }}</label>
+                    <input class="sign-in-box__input" type="text" name="customer[last_name]" id="{{ formId }}-LastName"
+                           {% if form.last_name %}value="{{ form.last_name }}"{% endif %} autocomplete="family-name"
+                           aria-required="true" required> -->
+
+                    <label for="{{ formId }}-email">{{ 'customer.register.email' | t }}</label>
+                    <input
+                            type="email"
+                            name="customer[email]"
+                            id="{{ formId }}-email"
+                            class="sign-in-box__input {% if form.errors contains 'email' %} input--error{% endif %}"
+                            {% if form.email %} value="{{ form.email }}"{% endif %}
+                            autocorrect="off"
+                            autocapitalize="off"
+                            autocomplete="email"
+                            aria-required="true"
+                            {%- if form.errors contains 'email' -%}
+                                class="input--error"
+                                aria-invalid="true"
+                                aria-describedby="{{ formId }}-email-error"
+                            {%- endif -%}
+                            required
+                    >
+                    {%- if form.errors contains 'email' -%}
+                        <span id="{{ formId }}-email-error" class="input-error-message">
+              <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+              {% include 'icon-error' %}
+              <span>{{ form.errors.translated_fields['email'] | capitalize }} {{ form.errors.messages['email'] }}.</span>
+            </span>
+                    {%- endif -%}
+
+                    <label for="{{ formId }}-password">{{ 'customer.register.password' | t }}</label>
+                    <input
+                            type="password"
+                            name="customer[password]"
+                            id="{{ formId }}-password"
+                            class="sign-in-box__input{% if form.errors contains 'password' %} input--error{% endif %}"
+                            aria-required="true"
+                            {%- if form.errors contains 'password' -%}
+                                class="input--error"
+                                aria-invalid="true"
+                                aria-describedby="{{ formId }}-password-error"
+                            {%- endif -%}
+                            required
+                    >
+                    {%- if form.errors contains 'password' -%}
+                        <span id="{{ formId }}-password-error" class="input-error-message">
+              {% include 'icon-error' %}
+              <span>{{ form.errors.translated_fields['password'] | capitalize }} {{ form.errors.messages['password'] }}.</span>
+            </span>
+                    {%- endif -%}
+
+                    <p class="text-center"></p>
+                    <input type="submit" value="{{ 'customer.register.submit' | t }}" class="btn-pd btn-pd-blue">
+                    </p>
+                {% endform %}
+
+                <div class="sign-in-login-redirect">
+                    <p>{{ 'custom.login_and_registration_pages.text_redirect_login' | t }}</p>
+                    <a href="/account/login">
+                        <button class="btn-pd btn-pd-white">{{ 'custom.login_and_registration_pages.text_button_redirect_login' | t }}</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% render 'footer-signin-login' %}

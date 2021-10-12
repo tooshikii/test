@@ -1,0 +1,73 @@
+<div class="bestseller-collection categories-list-container page-width">
+    {% if section.settings.title != blank %}
+        <div class="section-header text-center bestseller-collection-header">
+            <h2>{{ section.settings.title | escape }}</h2>
+            {% include 'icon-paw' %}
+            <h2>{{ section.settings.title_second | escape }}</h2>
+        </div>
+        {% include 'icon-divisor' %}
+    {% endif %}
+
+    {%- assign collection = collections[section.settings.collection] -%}
+    {%- assign max_products = limit -%}
+
+    {% capture img_id %}ProductCardImage-{{ section.id }}-{{ product.id }}
+    {% endcapture %}
+    {% capture wrapper_id %}ProductCardImageWrapper-{{ section.id }}-{{ product.id }}
+    {% endcapture %}
+    {%- assign preview_image = product.featured_media.preview_image -%}
+    {%- assign img_url = preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+    {% unless preview_image == blank %}
+        {% include 'image-style', image: preview_image, height: max_height, wrapper_id: wrapper_id, img_id: img_id %}
+    {% endunless %}
+
+    <div class="categories-list-grid">
+        {% for product in collection.products limit:max_products %}
+            <div
+                class="category-box category-box__grid"
+                onclick="location.href='{{ product.url }}';"
+                style="cursor: pointer">
+                {% render 'ribbon' with product as product %}
+                {% if product.featured_media.preview_image != blank %}
+                    {%- assign img_url = product.featured_media.preview_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                    {%- if product.featured_media.preview_image.width < max_width -%}
+                        {%- assign slide_width = product.featured_media.preview_image.width -%}
+                    {%- endif -%}
+                    {%- if product.featured_media.preview_image != blank -%}
+                        <img id="{{ img_id }}" class="grid-view-item__image lazyload" alt="{{ product.featured_media.preview_image.alt }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ product.featured_media.preview_image.aspect_ratio }}" data-sizes="auto" data-image>
+                        <div aria-hidden="true" class="bestseller-collection-product-card__infos">
+                            <div class="bestseller-collection-product-card__title">
+                                {% if product.metafields.accentuate.main_title %}
+                                    <p>{{ product.metafields.accentuate.main_title }}</p>
+                                {% else %}
+                                    <p>{{ product.title }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="bestseller-collection-product-card__badge_price">
+                            {% if product.metafields.judgeme.badge %}
+                                <div style='{{ jm_style }}' class="jdgm-widget jdgm-preview-badge" data-id='{{ product.id }}'>
+                                    {{ product.metafields.judgeme.badge }}
+                                </div>
+                            {% endif %}
+                            {% if product.metafields.accentuate.sub_title %}
+                                <div class="bestseller-collection-product-card__sub-title">
+                                    <p>{{ product.metafields.accentuate.sub_title }}</p>
+                                </div>
+                            {% endif %}
+                            {% include 'product-price-bestseller', product: product, show_vendor: show_vendor %}
+                                 </div>
+                        </div>
+                    {%- else -%}
+                        <span>
+                            {% capture current %}
+                                {% cycle 1, 2 %}
+                            {% endcapture %}
+                            {{ "lifestyle-" | append: current | placeholder_svg_tag: "placeholder-svg" }}
+                        </span>
+                    {%- endif -%}
+                {%- endif -%}
+            </div>
+        {% endfor %}
+    </div>
+</div>

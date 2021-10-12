@@ -1,0 +1,9 @@
+<div class="pdp-images-thumbnail">
+    <ul id="thumbnail-list">
+        {% for image in product.images %}
+            <li>
+                <img src="{{ image | img_url: "large" }}" alt="{{ image.alt }}" class="pdp-images-thumbnail__img lazyautosizes lazyloaded">
+            {% endfor %}
+        </li>
+    </ul>
+</div>

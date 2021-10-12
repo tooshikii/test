@@ -1,0 +1,20 @@
+{% if section.settings.show_banner == true %}
+    {%- if collection.image != blank -%}
+        {%- assign img_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    {% else %}
+        {%- assign img_url = section.settings.image_placeholder_desktop | img_url: '1x1' | replace: '_1x1.', '_{width}x.'  -%}
+        {%- assign img_url_mobile = section.settings.image_placeholder_mobile | img_url: '1x1' | replace: '_1x1.', '_{width}x.'  -%}
+    {%- endif -%}
+
+    {% assign no_description_class = 'collection-banner-no-description ' %}
+
+    <div class="{%- if collection.description == blank -%}{{ no_description_class }}{%- endif-%}collection-banner">
+        <img class="hero-fixed-width__image lazyload lazypreload" data-src="{{ img_url }}" data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]" data-aspectratio="{{ collection.image.aspect_ratio }}" data-sizes="auto" alt="{{ collection.image.alt | escape }}" data-device="desktop">
+        <img class="hero-fixed-width__image lazyload lazypreload" data-src="{{ img_url_mobile }}" data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]" data-aspectratio="{{ collection.image.aspect_ratio }}" data-sizes="auto" alt="{{ collection.image.alt | escape }}" data-device="mobile">
+        {%- if collection.description != blank -%}
+            <div class="collection-banner-description">
+                {{ collection.description }}
+            </div>
+        {%- endif -%}
+    </div>
+{% endif %}

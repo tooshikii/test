@@ -1,0 +1,19 @@
+{% if product.metafields.accentuate.ribbon_text_1 %}
+    {% case product.metafields.accentuate.ribbon_color %}
+        {% when "Grün" %}
+            {% assign ribbon_class = 'green' %}
+        {% when "Korall" %}
+            {% assign ribbon_class = 'coral' %}
+        {% when "Hell-Orange" %}
+            {% assign ribbon_class = 'orange' %}
+        {% when "Gelb" %}
+            {% assign ribbon_class = 'yellow' %}
+        {% when "Red-Sale" %}
+            {% assign ribbon_class = 'red' %}
+        {% else %}
+            {% assign ribbon_class = 'none' %}
+    {% endcase %}
+    <div class="product-ribbon ribbon_color--{{ ribbon_class }}">
+        <p>{{ product.metafields.accentuate.ribbon_text_1 }}</p>
+    </div>
+{% endif %}

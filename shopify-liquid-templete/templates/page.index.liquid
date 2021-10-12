@@ -1,0 +1,11 @@
+{% liquid
+case page.title
+   when "PER CANI"
+    section 'banner-home-dogs'
+    section 'main-categories-dogs'
+   section 'bestseller-dogs'
+   when "PER GATTI"
+    section 'banner-home-cats'
+    section 'main-categories-cats'
+    section 'bestseller-cats'
+endcase %}

@@ -1,0 +1,1094 @@
+{
+  "current": {
+    "color_text": "#1a335b",
+    "color_body_text": "#515767",
+    "color_sale_text": "#ff5768",
+    "color_button": "#1a335b",
+    "favicon": "shopify:\/\/shop_images\/PD_favicon.png",
+    "checkout_logo_image": "shopify:\/\/shop_images\/270219_PETS_20_002_PD_Logo_PDBlue.png",
+    "checkout_logo_size": "medium",
+    "checkout_accent_color": "#f69564",
+    "checkout_button_color": "#19335a",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "align_logo": "left",
+          "logo": "shopify:\/\/shop_images\/PD_logo.png",
+          "logo_max_width": 80,
+          "logo_max_width_mobile": 105,
+          "main_linklist": "main-menu",
+          "message": true,
+          "home_page_only": false,
+          "message_text": "Il miglior cibo per cani e gatti - 100% naturale con ingredienti di primissima qualità",
+          "message_link": "",
+          "color_bg": "#1a335b",
+          "font_size": 14,
+          "color_text": "#ffffff",
+          "show_usp_bar": true,
+          "usp_bar_color": "#1a335b",
+          "usp_bar_text_color": "#ffffff",
+          "usp_bar_text_shipping": "Spedizione gratuita a partire da €50",
+          "usp_bar_text_heart": "Massima tollerabilità",
+          "usp_bar_text_recipe": "Ricette selezionate e gustose"
+        }
+      },
+      "feature-row": {
+        "type": "feature-row",
+        "disabled": true,
+        "settings": {
+          "layout": "left",
+          "title": "Image with text",
+          "text": "<p>Pair large text with an image to give focus to your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+          "button_label": ""
+        }
+      },
+      "feature-columns": {
+        "type": "feature-columns",
+        "disabled": true,
+        "blocks": {
+          "feature-columns-0": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": ""
+            }
+          },
+          "feature-columns-1": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": ""
+            }
+          },
+          "feature-columns-2": {
+            "type": "text_block",
+            "settings": {
+              "enable_image": true,
+              "title": "Add a title or tagline",
+              "text": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.<\/p>",
+              "button_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "feature-columns-0",
+          "feature-columns-1",
+          "feature-columns-2"
+        ],
+        "settings": {
+          "title": "",
+          "align_text": "left"
+        }
+      },
+      "collection": {
+        "type": "collection",
+        "settings": {
+          "title": "Featured collection",
+          "collection": "",
+          "grid": 4,
+          "rows": 2,
+          "show_vendor": false,
+          "show_view_all": false
+        }
+      },
+      "quotes": {
+        "type": "quotes",
+        "disabled": true,
+        "blocks": {
+          "quotes-0": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          },
+          "quotes-1": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          },
+          "quotes-2": {
+            "type": "quote",
+            "settings": {
+              "quote": "<p>Add customer reviews and testimonials to showcase your store’s happy customers.<\/p>",
+              "author": "Author's name"
+            }
+          }
+        },
+        "block_order": [
+          "quotes-0",
+          "quotes-1",
+          "quotes-2"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "image-bar": {
+        "type": "image-bar",
+        "disabled": true,
+        "blocks": {
+          "image-bar-0": {
+            "type": "image",
+            "settings": {
+              "alignment": "center",
+              "cta_label": ""
+            }
+          },
+          "image-bar-1": {
+            "type": "image",
+            "settings": {
+              "alignment": "center",
+              "cta_label": ""
+            }
+          },
+          "image-bar-2": {
+            "type": "image",
+            "settings": {
+              "alignment": "center",
+              "cta_label": ""
+            }
+          }
+        },
+        "block_order": [
+          "image-bar-0",
+          "image-bar-1",
+          "image-bar-2"
+        ],
+        "settings": {
+          "section_height": "medium"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-1": {
+            "type": "newsletter",
+            "settings": {
+              "title": "Newsletter",
+              "newsletter_success_line_1": "Grazie per esserti iscritto!",
+              "newsletter_success_line_2": "Ti abbiamo inviato un'e-mail di conferma.",
+              "button_newsletter_dog": "Fan dei cani",
+              "button_newsletter_cat": "Fan dei gatti",
+              "sub_heading": "Iscriviti alla nostra newsletter e ottieni un buono sconto del 10%",
+              "footnote_newsletter": "Registrandoti, accetti la nostra politica sulla privacy. Può annullare l'iscrizione in qualsiasi momento.",
+              "hashtag": "#petsdelilove",
+              "sub_hashtag": "Non perdere altre notizie e promozioni!",
+              "active_facebook": true,
+              "url_facebook": "https:\/\/www.facebook.com\/petsdeli",
+              "active_instagram": true,
+              "url_instagram": "https:\/\/www.instagram.com\/petsdeli\/",
+              "active_pinterest": true,
+              "url_pinterest": "https:\/\/www.pinterest.de\/petsdeli\/"
+            }
+          },
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "title": "Aiuto",
+              "menu": "footer"
+            }
+          }
+        },
+        "block_order": [
+          "footer-1",
+          "footer-0"
+        ],
+        "settings": {
+          "show_payment_icons": true,
+          "color_footer_bg": "#ffffff",
+          "color_footer_text": "#515767",
+          "show_locale_selector": false,
+          "show_currency_selector": false,
+          "footer_linklist_legal": "legal",
+          "element_head": "Hai bisogno di aiuto per scegliere il prodotto giusto per il tuo animale domestico?",
+          "element_sub": "Richiedi una consultazione gratuita.",
+          "telefon": "+49 30 837 99800",
+          "email": "office@petsdeli.it",
+          "whatsapp": "",
+          "opening": "Da lunedì a venerdì, dalle 9 alle 18.",
+          "shipping": "CONSEGNA SICURA CON",
+          "payment": "PAGAMENTO CON"
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "font_size": 24,
+          "show_quantity_selector": true,
+          "show_vendor": false,
+          "enable_payment_button": false,
+          "show_share_buttons": false,
+          "size": "Formato",
+          "delivery_time": "Consegna: 3-6 giorni lavorativi",
+          "translation_plus": "più",
+          "translation_shipping": "spedizione",
+          "url_shipping_page": "shopify:\/\/pages\/cats",
+          "info_text_element_1": "Adatto ai soggetti allergici",
+          "alt_text_element_1": "Adatto ai soggetti allergici",
+          "info_text_element_2": "Nessun test su animali",
+          "alt_text_element_2": "Nessun test su animali",
+          "info_text_element_3": "Senza cereali e senza glutine",
+          "alt_text_element_3": "Senza cereali e senza glutine",
+          "info_text_element_4": "Prodotto in Germania",
+          "alt_text_element_4": "Prodotto in Germania"
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "Già provato?",
+          "show_vendor": false
+        }
+      },
+      "16190006670435a340": {
+        "type": "main-categories",
+        "blocks": {
+          "e6caf8b4-e8a6-40e6-9c7b-1711486b17a6": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-pl-home-tile-dog-mobile-210601_1280x_fc4b3f88-b145-4e6e-b6cf-ca804088d3b2.jpg",
+              "link": "shopify:\/\/pages\/per-cani",
+              "resize_image": false,
+              "cta_label": "PER CANI"
+            }
+          },
+          "d9c5f1b9-eb74-4ac1-b6fd-35b3521cdfd0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-pl-home-tile-cat-mobile-210601_1280x_21b4f2a7-26d7-42a5-a3f7-65f99d13454e.jpg",
+              "link": "shopify:\/\/pages\/per-gatti",
+              "resize_image": false,
+              "cta_label": "PER GATTI"
+            }
+          }
+        },
+        "block_order": [
+          "e6caf8b4-e8a6-40e6-9c7b-1711486b17a6",
+          "d9c5f1b9-eb74-4ac1-b6fd-35b3521cdfd0"
+        ],
+        "settings": {}
+      },
+      "1619444342e7ef9733": {
+        "type": "banner-home",
+        "settings": {
+          "background_color": "#ffffff",
+          "font_color_header": "#1a335b",
+          "font_color_text": "#1a335b",
+          "image": "shopify:\/\/shop_images\/image00001_600x_21a686dc-c20e-4de0-b7f1-4accea4883b3.jpg",
+          "title": "Sei curioso? Provalo adesso!",
+          "text": "<p>Acquista ora il nostro cibo sano nelle comode confezioni di prova e risparmia fino al 22%.<\/p>",
+          "button_label": "Scopri subito",
+          "show_tag": true,
+          "tag_text": "Risparmia fino al 22%",
+          "tag_color": "#ff5768",
+          "tag_text_color": "#ffffff",
+          "banner_link": "shopify:\/\/collections\/pacchetti-di-degustazione"
+        }
+      },
+      "1619511942b7fa2e94": {
+        "type": "categories-list",
+        "blocks": {
+          "1619511942b7fa2e94-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/210603-rendering-hund-weiteres-purposebox-classic_1600x1600_6e1f3c1b-60e1-4b02-b43c-b54690708a5d.jpg",
+              "link": "shopify:\/\/collections\/pacchetti-di-degustazione-per-cani",
+              "cta_label": "Confezioni di degustazione"
+            }
+          },
+          "1619511942b7fa2e94-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-hund-nafu-classic-400g-huhn-01_1024x1024_02cca9ce-a8a7-4b71-81e4-cf89027b635a.jpg",
+              "link": "shopify:\/\/collections\/cibo-umido-per-cani",
+              "cta_label": "Cibo umido"
+            }
+          },
+          "1619511942b7fa2e94-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-hund-trofu-classic-2kg-rind-01_1600x1600_d9d4245e-3b62-4959-9149-db03d893edbd.jpg",
+              "link": "shopify:\/\/collections\/asciugare-cibo-per-cani",
+              "cta_label": "Crocchette"
+            }
+          },
+          "1619511942b7fa2e94-4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-hund-snacks-softies-rind-01_1024x1024_2a8af504-60a0-4755-b6b1-066ea323dcfd.jpg",
+              "link": "shopify:\/\/collections\/snack-per-cani-1",
+              "cta_label": "Snack"
+            }
+          }
+        },
+        "block_order": [
+          "1619511942b7fa2e94-0",
+          "1619511942b7fa2e94-1",
+          "1619511942b7fa2e94-2",
+          "1619511942b7fa2e94-4"
+        ],
+        "settings": {
+          "title": "CIBO PER CANI"
+        }
+      },
+      "16195121201dffc165": {
+        "type": "categories-list",
+        "blocks": {
+          "16195121201dffc165-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/210512-rendering-katze-weiteres-purposebox-classic-01_1600x1600_2c3e68c4-4700-4bef-baf8-3a5d915e7b11.jpg",
+              "link": "shopify:\/\/collections\/pacchetti-di-degustazione-per-gatti",
+              "cta_label": "Confezioni di degustazione"
+            }
+          },
+          "16195121201dffc165-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-katze-nafu-puremeat-schale-huhn-01_1024x1024_e8e9db47-af22-4f45-881a-957fe3174daf.jpg",
+              "link": "shopify:\/\/collections\/cibo-umido-per-gatti",
+              "cta_label": "Cibo umido"
+            }
+          },
+          "16195121201dffc165-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-katze-trofu-classic-2kg-truthan-01_1024x1024_24faa45d-3e3e-4b9a-8023-a3e87f3ff5f4.jpg",
+              "link": "shopify:\/\/collections\/asciugare-cibo-per-gatti",
+              "cta_label": "Croccantini"
+            }
+          },
+          "16195121201dffc165-4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-katze-snack-cremesnack-combo-huhn-thunfisch-krill-01_1024x1024_0c6f25ac-3243-486c-ae1c-2f8bea712d32.jpg",
+              "link": "shopify:\/\/collections\/snack-per-gatti",
+              "cta_label": "Snack"
+            }
+          }
+        },
+        "block_order": [
+          "16195121201dffc165-0",
+          "16195121201dffc165-1",
+          "16195121201dffc165-2",
+          "16195121201dffc165-4"
+        ],
+        "settings": {
+          "title": "CIBO PER GATTI"
+        }
+      },
+      "16195122910e786c27": {
+        "type": "seal",
+        "blocks": {
+          "16195122910e786c27-0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/FutterTest_180x_04a4b18c-1ee1-4607-8481-cee0a57d8108.png",
+              "link": ""
+            }
+          },
+          "16195122910e786c27-1": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/GoodShopping_180x_95101f8c-d3c7-423f-8e5a-d0589cae5e51.png",
+              "link": ""
+            }
+          },
+          "16195122910e786c27-2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Trusted_Shop_1_180x_4fb2261e-6ec3-43a6-864c-ad26954a6e8d.png",
+              "link": ""
+            }
+          },
+          "16195122910e786c27-3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/DLG_180x_ce4b2fab-a696-48f6-bee4-2e6478a58203.png",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "16195122910e786c27-0",
+          "16195122910e786c27-1",
+          "16195122910e786c27-2",
+          "16195122910e786c27-3"
+        ],
+        "settings": {
+          "text-button": "la nostra promessa",
+          "link-button": "",
+          "show_button": false
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "settings": {
+          "display_type": "all",
+          "sort": "alphabetical",
+          "grid": 3
+        }
+      },
+      "banner-home": {
+        "type": "banner-home",
+        "settings": {
+          "background_color": "#5500ff",
+          "font_color_header": "#ffffff",
+          "font_color_text": "#ffffff",
+          "image": "shopify:\/\/shop_images\/Rectangle_4_1.png",
+          "title": "Jetzt bis zu 48% auf unsere Probierpakete sparen",
+          "text": "<p>Gesund ins neue Jahr mit fitten Pfoten und unseren smarten Boxen für jede Gelegenheit!<br\/><\/p>",
+          "button_label": "zum warenkorb",
+          "show_tag": true,
+          "tag_text": "AKTION",
+          "tag_color": "#ff5768",
+          "tag_text_color": "#ffffff"
+        }
+      },
+      "main-categories": {
+        "type": "main-categories",
+        "blocks": {
+          "576bf0d4-3589-48a9-95a5-ac25c3c40a2b": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Vector_ff4b4adc-bc51-4335-a446-42f4e1dee589.png",
+              "cta_label": "Nassfutter for Dogs"
+            }
+          },
+          "ceb60f92-24c7-4957-87c3-fa67a670e458": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Vector-3_9b2b9a50-654b-43e3-b426-4e22056ce57d.png",
+              "cta_label": "Nassfutter for Dogs"
+            }
+          },
+          "1c632170-6ae6-410c-aec1-a194a0f2f475": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Vector-1_ba77cac1-9c6d-4a6d-9c30-454b20d40320.png",
+              "cta_label": "Barf Frishe menus for dogs"
+            }
+          },
+          "a099815f-5049-419e-89f1-3482d62b283c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Vector-4_ba3251a5-ad13-4f2d-95cf-92aedf980f40.png",
+              "cta_label": "Snaks for Dogs"
+            }
+          },
+          "b4f170cf-fa5f-401e-8dc2-0549065d1fc4": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Vector-2_84881e60-17ad-4ed3-82bf-eeeaf4866f12.png",
+              "cta_label": "Complements for dogs"
+            }
+          },
+          "940a45f2-524d-4b16-980a-51aee2dbd8d2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Vector-5.png",
+              "cta_label": "Trial packs for Dogs"
+            }
+          }
+        },
+        "block_order": [
+          "576bf0d4-3589-48a9-95a5-ac25c3c40a2b",
+          "ceb60f92-24c7-4957-87c3-fa67a670e458",
+          "1c632170-6ae6-410c-aec1-a194a0f2f475",
+          "a099815f-5049-419e-89f1-3482d62b283c",
+          "b4f170cf-fa5f-401e-8dc2-0549065d1fc4",
+          "940a45f2-524d-4b16-980a-51aee2dbd8d2"
+        ],
+        "settings": {}
+      },
+      "banner-home-cats": {
+        "type": "banner-home-cats",
+        "settings": {
+          "background_color": "#ffa085",
+          "font_color_header": "#ffffff",
+          "font_color_text": "#ffffff",
+          "image": "shopify:\/\/shop_images\/pd-pl-promo-tile-cat-mobile-210601_1280x_0dbbe9e4-6e78-4b4b-96ec-b3b8581712a4.jpg",
+          "title": "Smorfie? Non con il nostro cibo umido!",
+          "text": "<p>Senza zucchero, senza cereali, senza conservanti, senza aromi artificiali, senza esaltatori di sapidità.<\/p>",
+          "button_label": "Scopri ora",
+          "show_tag": false,
+          "tag_text": "NEU",
+          "tag_color": "#4fa8bc",
+          "tag_text_color": "#ffffff",
+          "banner_link": "shopify:\/\/collections\/tutti-i-prodotti-per-gatti"
+        }
+      },
+      "banner-home-dogs": {
+        "type": "banner-home-dogs",
+        "settings": {
+          "background_color": "#55c3d4",
+          "font_color_header": "#ffffff",
+          "font_color_text": "#1a335b",
+          "image": "shopify:\/\/shop_images\/pd-pl-promo-tile-dog-mobile-210601_2048x_238e8648-1221-4026-a295-49c9677b1af2.jpg",
+          "title": "Il cibo per cani non deve essere disgustoso!",
+          "text": "<p>Passa subito a un cibo per cani sano e naturale.<\/p>",
+          "button_label": "Acquista ora",
+          "show_tag": false,
+          "tag_text": "AKTION",
+          "tag_color": "#ff5768",
+          "tag_text_color": "#ffffff",
+          "banner_link": "shopify:\/\/collections\/tutti-i-prodotti-per-cani"
+        }
+      },
+      "main-categories-cats": {
+        "type": "main-categories-cats",
+        "blocks": {
+          "fee57fa3-b9bf-4914-b4ea-ecb451424020": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-katze-nafu-puremeat-schale-huhn-01_1024x1024_e8e9db47-af22-4f45-881a-957fe3174daf.jpg",
+              "link": "shopify:\/\/collections\/cibo-umido-per-gatti",
+              "resize_image": true,
+              "cta_label": "Cibo umido per gatti"
+            }
+          },
+          "c3604d24-5efc-408a-8695-5da03ac202c2": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-katze-trofu-classic-2kg-truthan-01_1024x1024_24faa45d-3e3e-4b9a-8023-a3e87f3ff5f4.jpg",
+              "link": "shopify:\/\/collections\/asciugare-cibo-per-gatti",
+              "resize_image": true,
+              "cta_label": "Croccantini per gatti"
+            }
+          },
+          "4c715466-d2c3-47f0-a63c-72a7a66c9f08": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-katze-snack-cremesnack-combo-huhn-thunfisch-krill-01_1024x1024_0c6f25ac-3243-486c-ae1c-2f8bea712d32.jpg",
+              "link": "shopify:\/\/collections\/snack-per-gatti",
+              "resize_image": true,
+              "cta_label": "Snack per gatti"
+            }
+          },
+          "5f3db856-3296-41db-8f51-05ea2269b8a0": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/210512-rendering-katze-weiteres-purposebox-classic-01_1600x1600_2c3e68c4-4700-4bef-baf8-3a5d915e7b11.jpg",
+              "link": "shopify:\/\/collections\/pacchetti-di-degustazione-per-gatti",
+              "resize_image": true,
+              "cta_label": "Pacchetti di degustazione per gatti"
+            }
+          }
+        },
+        "block_order": [
+          "fee57fa3-b9bf-4914-b4ea-ecb451424020",
+          "c3604d24-5efc-408a-8695-5da03ac202c2",
+          "4c715466-d2c3-47f0-a63c-72a7a66c9f08",
+          "5f3db856-3296-41db-8f51-05ea2269b8a0"
+        ],
+        "settings": {}
+      },
+      "bestseller-cats": {
+        "type": "bestseller-cats",
+        "settings": {
+          "title": "Per gatti",
+          "title_second": "i prodotti più venduti",
+          "limit": 8,
+          "collection": "tutti-i-prodotti-per-gatti"
+        }
+      },
+      "1619710492dcf4c9fb": {
+        "type": "bestseller-home",
+        "settings": {
+          "title": "Per cani",
+          "title_second": "i prodotti più venduti",
+          "limit": 8,
+          "collection": "tutti-i-prodotti-per-cani"
+        }
+      },
+      "16197105328c392c93": {
+        "type": "bestseller-home",
+        "settings": {
+          "title": "Per gatti",
+          "title_second": "i prodotti più venduti",
+          "limit": 8,
+          "collection": "tutti-i-prodotti-per-gatti"
+        }
+      },
+      "main-categories-dogs": {
+        "type": "main-categories-dogs",
+        "blocks": {
+          "5c5d7dc6-5265-4654-9fa5-1f62105955df": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-hund-nafu-classic-400g-huhn-01_1024x1024_02cca9ce-a8a7-4b71-81e4-cf89027b635a.jpg",
+              "link": "shopify:\/\/collections\/cibo-umido-per-cani",
+              "resize_image": true,
+              "cta_label": "Cibo umido per cani"
+            }
+          },
+          "2c2a48f1-fbeb-43ab-8450-b624da6096ad": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-hund-trofu-classic-2kg-rind-01_1600x1600_d9d4245e-3b62-4959-9149-db03d893edbd.jpg",
+              "link": "shopify:\/\/collections\/asciugare-cibo-per-cani",
+              "resize_image": true,
+              "cta_label": "Crocchette per cani"
+            }
+          },
+          "0d03995c-8c94-4acd-a0fe-059f8a519d8a": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/pd-hund-snacks-softies-rind-01_1024x1024_2a8af504-60a0-4755-b6b1-066ea323dcfd.jpg",
+              "link": "shopify:\/\/collections\/snack-per-cani-1",
+              "resize_image": true,
+              "cta_label": "Snack per cani"
+            }
+          },
+          "25f780e2-a81a-4b1e-98c1-030e170ca9bd": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/210603-rendering-hund-weiteres-purposebox-classic_1600x1600_6e1f3c1b-60e1-4b02-b43c-b54690708a5d.jpg",
+              "link": "shopify:\/\/collections\/pacchetti-di-degustazione-per-cani",
+              "resize_image": true,
+              "cta_label": "Pacchetti di degustazione per cani"
+            }
+          }
+        },
+        "block_order": [
+          "5c5d7dc6-5265-4654-9fa5-1f62105955df",
+          "2c2a48f1-fbeb-43ab-8450-b624da6096ad",
+          "0d03995c-8c94-4acd-a0fe-059f8a519d8a",
+          "25f780e2-a81a-4b1e-98c1-030e170ca9bd"
+        ],
+        "settings": {}
+      },
+      "bestseller-dogs": {
+        "type": "bestseller-dogs",
+        "settings": {
+          "title": "Per cani",
+          "title_second": "i prodotti più venduti",
+          "limit": 8,
+          "collection": "tutti-i-prodotti-per-cani"
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "filter_title": "Filtri",
+          "filter_reset": "Cancella tutto",
+          "no_product_found": "Nessun prodotto trovato",
+          "sorting_relevance": "Per pertinenza",
+          "sorting_ascending": "Prezzo più basso",
+          "sorting_descending": "Prezzo più alto",
+          "sorting_new": "Più recenti",
+          "sorting_description": "Descrizione articolo",
+          "available_in": "disponibile in",
+          "show_banner": false,
+          "display_ad_onsite": false,
+          "card_ad_onsite_text_header": "10% Rabatt auf BARF-Produkte? Oh mein Gott",
+          "card_ad_onsite_text_sub": "Weitere Informationen über die BARF-Diät finden Sie hier.",
+          "card_ad_onsite_color": "#1a335b",
+          "card_ad_onsite_text_color": "#ffffff",
+          "card_ad_onsite_url": "",
+          "sale_gradient": true
+        }
+      },
+      "cart-template": {
+        "type": "cart-template",
+        "settings": {
+          "cart_ajax_enable": true,
+          "cart_notes_enable": false,
+          "translation_pay_also_with": "o pagare direttamente con",
+          "translation_accepted_payments": "Accettiamo",
+          "legal_text_button": "",
+          "max_product_cart": 98
+        }
+      }
+    },
+    "content_for_index": [
+      "1619444342e7ef9733",
+      "16190006670435a340",
+      "16195122910e786c27",
+      "1619710492dcf4c9fb",
+      "16197105328c392c93",
+      "1619511942b7fa2e94",
+      "16195121201dffc165"
+    ]
+  },
+  "presets": {
+    "Default": {
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {}
+        },
+        "hero-1": {
+          "type": "hero",
+          "settings": {
+            "hero_size": "large",
+            "text_size": "large"
+          }
+        },
+        "feature-row": {
+          "type": "feature-row",
+          "settings": {}
+        },
+        "feature-columns": {
+          "type": "feature-columns",
+          "blocks": {
+            "feature-columns-0": {
+              "type": "text_block",
+              "settings": {}
+            },
+            "feature-columns-1": {
+              "type": "text_block",
+              "settings": {}
+            },
+            "feature-columns-2": {
+              "type": "text_block",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "feature-columns-0",
+            "feature-columns-1",
+            "feature-columns-2"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "collection": {
+          "type": "collection",
+          "settings": {
+            "grid": 4
+          }
+        },
+        "hero-2": {
+          "type": "hero",
+          "settings": {
+            "text_size": "large"
+          }
+        },
+        "quotes": {
+          "type": "quotes",
+          "blocks": {
+            "quotes-0": {
+              "type": "quote",
+              "settings": {}
+            },
+            "quotes-1": {
+              "type": "quote",
+              "settings": {}
+            },
+            "quotes-2": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "quotes-0",
+            "quotes-1",
+            "quotes-2"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "image-bar": {
+          "type": "image-bar",
+          "blocks": {
+            "image-bar-0": {
+              "type": "image",
+              "settings": {}
+            },
+            "image-bar-1": {
+              "type": "image",
+              "settings": {}
+            },
+            "image-bar-2": {
+              "type": "image",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "image-bar-0",
+            "image-bar-1",
+            "image-bar-2"
+          ],
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "footer-1": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "footer-0",
+            "footer-1"
+          ],
+          "settings": {
+            "show_payment_icons": true
+          }
+        }
+      },
+      "content_for_index": [
+        "hero-1",
+        "feature-row",
+        "feature-columns",
+        "collection",
+        "hero-2",
+        "quotes",
+        "image-bar"
+      ]
+    },
+    "Light": {
+      "color_text": "#162950",
+      "color_body_text": "#515767",
+      "color_sale_text": "#DA2F0C",
+      "color_borders": "#e4e4e4",
+      "color_button": "#DA2F0C",
+      "color_button_text": "#ffffff",
+      "color_small_button_text_border": "#162950",
+      "color_text_field": "#ffffff",
+      "color_text_field_text": "#162950",
+      "color_text_field_border": "#909090",
+      "color_image_overlay_text": "#ffffff",
+      "color_image_overlay": "#3d3d3d",
+      "image_overlay_opacity": 40,
+      "color_body_bg": "#f8f8f8",
+      "type_header_font": "muli_n6",
+      "type_header_base_size": 26,
+      "type_base_font": "muli_n4",
+      "type_base_size": 18,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "social_twitter_link": "",
+      "social_facebook_link": "",
+      "social_pinterest_link": "",
+      "social_instagram_link": "",
+      "social_tumblr_link": "",
+      "social_snapchat_link": "",
+      "social_youtube_link": "",
+      "social_vimeo_link": "",
+      "favicon": "",
+      "checkout_header_image": "",
+      "checkout_logo_image": "",
+      "checkout_logo_position": "left",
+      "checkout_logo_size": "small",
+      "checkout_body_background_image": "",
+      "checkout_body_background_color": "#ffffff",
+      "checkout_input_background_color_mode": "white",
+      "checkout_sidebar_background_image": "",
+      "checkout_sidebar_background_color": "#e8f3f6",
+      "checkout_heading_font": "Roboto",
+      "checkout_body_font": "Source Sans Pro",
+      "checkout_accent_color": "#1990c6",
+      "checkout_button_color": "#23314e",
+      "checkout_error_color": "#ff6d6d",
+      "sections": {
+        "header": {
+          "type": "header",
+          "settings": {
+            "align_logo": "left",
+            "logo": "",
+            "logo_max_width": 135,
+            "main_linklist": "main-menu",
+            "message": true,
+            "color_bg": "#162950",
+            "color_text": "#ffffff"
+          }
+        },
+        "hero": {
+          "type": "hero",
+          "settings": {
+            "alignment": "center",
+            "hero_size": "x-large",
+            "text_size": "large"
+          }
+        },
+        "slideshow": {
+          "type": "slideshow",
+          "blocks": {
+            "slideshow-0": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center center"
+              }
+            },
+            "1492095993817": {
+              "type": "image",
+              "settings": {
+                "image": "",
+                "alignment": "center"
+              }
+            }
+          },
+          "block_order": [
+            "slideshow-0",
+            "1492095993817"
+          ],
+          "settings": {
+            "slideshow_height": "medium",
+            "text_size": "medium",
+            "autorotate": false,
+            "autorotate_speed": 5
+          }
+        },
+        "featured-collections": {
+          "type": "collection",
+          "settings": {
+            "grid": 3,
+            "rows": 1,
+            "show_vendor": true,
+            "show_view_all": true
+          }
+        },
+        "product-template": {
+          "type": "product-template",
+          "settings": {
+            "show_quantity_selector": false,
+            "show_vendor": false,
+            "show_share_buttons": true
+          }
+        },
+        "collection-template": {
+          "type": "collection-template",
+          "settings": {}
+        },
+        "1492033809691": {
+          "type": "map",
+          "settings": {}
+        },
+        "1492033877875": {
+          "type": "quotes",
+          "blocks": {
+            "1492033877875-0": {
+              "type": "quote",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492033877875-0"
+          ],
+          "settings": {}
+        },
+        "1492033924902": {
+          "type": "custom-content",
+          "blocks": {
+            "1492033924902-0": {
+              "type": "text",
+              "settings": {
+                "width": "100%",
+                "alignment": "center",
+                "align_text": "center"
+              }
+            }
+          },
+          "block_order": [
+            "1492033924902-0"
+          ],
+          "settings": {
+            "title": ""
+          }
+        },
+        "1492096252560": {
+          "type": "collection-list",
+          "blocks": {
+            "1492096252560-0": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-1": {
+              "type": "featured_collection",
+              "settings": {}
+            },
+            "1492096252560-2": {
+              "type": "featured_collection",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "1492096252560-0",
+            "1492096252560-1",
+            "1492096252560-2"
+          ],
+          "settings": {
+            "grid": 3
+          }
+        },
+        "blog-template": {
+          "type": "blog-template",
+          "settings": {
+            "layout": "grid",
+            "blog_show_author": true,
+            "blog_show_date": false
+          }
+        },
+        "article-template": {
+          "type": "article-template",
+          "settings": {
+            "blog_show_author": true,
+            "blog_show_date": true,
+            "show_share_buttons": true
+          }
+        },
+        "cart-template": {
+          "type": "cart-template",
+          "settings": {
+            "cart_notes_enable": false
+          }
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "link_list": {
+              "type": "link_list",
+              "settings": {}
+            },
+            "text": {
+              "type": "text",
+              "settings": {}
+            },
+            "newsletter": {
+              "type": "newsletter",
+              "settings": {}
+            }
+          },
+          "block_order": [
+            "link_list",
+            "text",
+            "newsletter"
+          ],
+          "settings": {
+            "color_footer_bg": "#f8f8f8",
+            "color_footer_text": "#6d6d6d"
+          }
+        }
+      },
+      "content_for_index": [
+        "hero",
+        "featured-collections",
+        "slideshow",
+        "1492033924902",
+        "1492096252560",
+        "1492033877875",
+        "1492033809691"
+      ]
+    }
+  }
+}

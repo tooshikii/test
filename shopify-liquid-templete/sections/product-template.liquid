@@ -1,0 +1,495 @@
+<style>
+    .pdp-features li {
+        background-image: url({{ 'icon-check-list.svg' | asset_url }});
+    }
+
+    .product-single__title {
+        font-size: {{ section.settings.font_size | append: 'px' }};
+        font-weight: 400;
+    }
+
+    .product-single__description ul:first-of-type {
+        display: none;
+    }
+</style>
+
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+{%- assign price = current_variant.price -%}
+{%- assign compare_at_price = current_variant.compare_at_price -%}
+{%- assign kilo_price = 1000 | times: current_variant.price | divided_by: current_variant.weight -%}
+ <div class="pdp-image-slider">
+     <button type="button" id="slider-close" class="pdp-image-slider-close-button">{% render 'icon-close-slider' %}</button>
+    <div class="slider">
+        {% for image in product.images %}
+            <img src="{{ image | img_url: 'original' }}" alt="{{ image.alt }}">
+        {% endfor %}
+    </div>
+    {% render 'icon-chevron-left'%}
+</div>
+
+<div class="pdp-container"
+     id="ProductSection-{{ section.id }}"
+     data-section-id="{{ section.id }}"
+     data-section-type="product"
+     data-enable-history-state="true"
+     data-ajax-enabled="{{ settings.enable_ajax }}"
+>
+    <div class="pdp-header-mobile">
+        <div class="pdp-header-mobile__info">
+            {% render 'ribbon' %}
+            <div class="pdp-review-badge-mobile">
+                {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+            </div> 
+        </div>
+        {% if product.metafields.accentuate.main_title %}
+            <h1>{{ product.metafields.accentuate.main_title }}</h1>
+            {% if product.metafields.accentuate.sub_title %}
+                <h2>{{ product.metafields.accentuate.sub_title }}</h2>
+            {% endif %}
+        {% else %}
+            <h1 class>{{ product.title }}</h1>
+        {% endif %}
+    </div>
+    <div class="pdp-main-section ">
+        <div class="pdp-images">
+               {% render "pdp-images-thumbnail" %}
+            <div class="pdp-images-main_image">
+                {% render 'ribbon' with product as product %}
+                <img src="{{ product.featured_image | img_url: "large" }}" alt="{{ product.featured_image }}" data-image-number="0" class="lazyautosizes lazyloaded">
+            </div>
+        </div>
+        <div class="pdp-buybox">
+            {% if product.metafields.accentuate.main_title %}
+                <h1 class="product-single__title">{{ product.metafields.accentuate.main_title }}</h1>
+                {% if product.metafields.accentuate.sub_title %}
+                    <h2 class="product-single__sub-title">{{ product.metafields.accentuate.sub_title }}</h2>
+                {% endif %}
+            {% else %}
+                <h1 class="product-single__title">{{ product.title }}</h1>
+            {% endif %}
+            <div class="pdp-review-badge-desktop">
+                 {% render 'judgeme_widgets', widget_type: 'judgeme_preview_badge', concierge_install: false, product: product %}
+            </div>
+            <script>window.performance.mark('debut:product:title_visible');</script>
+
+            {% form 'product', product, data-productid: product.id, class: "pdp-buybox-form", novalidate: 'novalidate', data-product-form: '' %}
+
+            <div class="pdp-buybox-group">
+                <div class="pdp-buybox-group__item">
+                    <label for="ProductSelect-{{ section.id }}">{{ section.settings.size }}</label>
+                    <select name="id" data-productid="{{ product.id }}" id="ProductSelect-{{ section.id }}">
+                        {% for variant in product.variants %}
+                            <option value="{{ variant.id }}"
+                            {%- if variant == current_variant %} selected="selected" {%- endif -%}>
+                                {{ variant.title }}  {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="pdp-buybox-group__item">
+                    <label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+                    <div class="pdp-buybox-group__quantity">
+                        <div id="pdp-quantity-down" class="btn-quantity">
+                            {% render 'icon-btn-minus' %}
+                        </div>
+                        <input id="Quantity-{{ section.id }}"
+                               name="quantity" value="1" min="1" pattern="[0-9]*"
+                               class="product-form__input product-form__input--quantity" data-quantity-input
+                        >
+                        <div id="pdp-quantity-up" class="btn-quantity">
+                            {% render 'icon-btn-plus' %}
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="product-form__error-message-wrapper product-form__error-message-wrapper--hidden{% if section.settings.enable_payment_button %} product-form__error-message-wrapper--has-payment-button{% endif %}"
+                 data-error-message-wrapper
+                 role="alert"
+            >
+                <span class="visually-hidden">{{ 'general.accessibility.error' | t }} </span>
+                {% include 'icon-error' %}
+                <span class="product-form__error-message"
+                      data-error-message>{{ 'products.product.quantity_minimum_message' | t }}</span>
+            </div>
+
+            <div class="product-form__controls-group product-form__controls-group--submit">
+                <div class="pdp__delivery-time">
+                    {% render 'icon-delivery' %}
+                    <p>{{ section.settings.delivery_time}}</p>
+                </div>
+                <div class="pdp__add-to-cart">
+                    <div class="product__price">
+                        <p id="current_variant_compare_at_price" class="product__price_compare">{{ compare_at_price | money }}</p>
+                        <p id="current_variant_price">{{ price | money }}</p>
+                    </div>
+                    <div class="product-form__item--submit
+                {%- if section.settings.enable_payment_button %} product-form__item--payment-button {%- endif -%}
+                {%- if product.has_only_default_variant %} product-form__item--no-variants {%- endif -%}"
+                    >
+
+
+                        <button type="submit" name="add"
+                                {% unless current_variant.available %} aria-disabled="true"{% endunless %}
+                                aria-label="{% unless current_variant.available %}{{ 'products.product.sold_out' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endunless %}"
+                                class="{% unless current_variant.available %}sold-out{% endunless %} btn product-form__cart-submit{% if section.settings.enable_payment_button and product.selling_plan_groups == empty %} btn--secondary-accent{% endif %}"
+                            {% if settings.enable_ajax %}aria-haspopup="dialog"{% endif %}
+                                data-add-to-cart>
+                  <span data-add-to-cart-text>
+                    {% unless current_variant.available %}
+                        {{ 'products.product.sold_out' | t }}
+                    {% else %}
+                        {{ 'products.product.add_to_cart' | t }}
+                    {% endunless %}
+                  </span>
+                            <span class="hide" data-loader>
+                        {% include 'icon-spinner' %}
+                    </span>
+                        </button>
+                        {% if section.settings.enable_payment_button %}
+                            {{ form | payment_button }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endform %}
+            </div>
+
+            {%- if cart.taxes_included or shop.shipping_policy.body != blank -%}
+                <div class="product__policies rte pdp-buybox__polices" data-product-policies>
+                    {%- if cart.taxes_included -%}
+                        {{ 'products.product.include_taxes' | t }}
+                    {%- endif -%}
+                    {%- if shop.shipping_policy.body != blank -%}
+                        {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
+                    {%- endif -%}
+                    <i id="price-per-weight"> {{ kilo_price | money }}/kg</i>
+                    <i>{{ section.settings.translation_plus }} <a href="/pages/wysylka" target="_blank">{{ section.settings.translation_shipping | capitalize }}</a></i>
+                </div>
+            {%- endif -%}
+
+
+            {%- comment -%}
+              Live region for announcing updated price and availability to screen readers
+            {%- endcomment -%}
+            <p class="visually-hidden" data-product-status
+               aria-live="polite"
+               role="status"
+            ></p>
+
+            {%- comment -%}
+              Live region for announcing that the product form has been submitted and the
+              product is in the process being added to the cart
+            {%- endcomment -%}
+            <p class="visually-hidden" data-loader-status
+               aria-live="assertive"
+               role="alert"
+               aria-hidden="true"
+            >{{ 'products.product.loader_label' | t }}</p>
+
+            <div
+                    class="product-single__store-availability-container"
+                    data-store-availability-container
+                    data-product-title="{{ product.title | escape }}"
+                    data-has-only-default-variant="{{ product.has_only_default_variant }}"
+                    data-base-url="{{ shop.url }}{{ routes.root_url }}"
+            >
+            </div>
+            <ul id="product-features" class="pdp-features"></ul>
+        </div>
+    </div>
+    <div class="pdp-pd-infos-container">
+        <div class="pdp-pd-infos">
+            <img src="{{ 'PD_USP-Vet.svg' | asset_url }}" alt="{{section.settings.alt_text_element_1 }}">
+            <p>{{section.settings.info_text_element_1 | upcase }}</p>
+        </div>
+        <div class="pdp-pd-infos">
+            <img src="{{ 'PD_USP-No-Animal-testing.svg' | asset_url }}" alt="{{section.settings.alt_text_element_2 }}">
+            <p>{{section.settings.info_text_element_2 | upcase }}</p>
+        </div>
+        <div class="pdp-pd-infos">
+            <img src="{{ 'PD_USP-Grain-free.svg' | asset_url }}" alt="{{section.settings.alt_text_element_3 }}">
+            <p>{{section.settings.info_text_element_3 | upcase }}</p>
+        </div>
+        <div class="pdp-pd-infos">
+            <img src="{{ 'PD_USP-Germany.svg' | asset_url }}" alt="{{section.settings.alt_text_element_4 }}">
+            <p>{{section.settings.info_text_element_4 | upcase }}</p>
+        </div>
+    </div>
+
+      {% assign content = product.description %}
+    <div class="product-single__description rte" id="pdp-accordion">
+        {% if content contains '<h2>' %}
+            {% assign content_arr = content | split: '<h2>' %}
+                {% if content_arr[0] != '' %}
+                    {{content_arr[0]}}
+        {% endif %}
+        {% for item in content_arr offset: 1 %}
+            <div class="pdp-description-panel">
+                <div class="pdp-description-panel-header"></div>
+                <div class="pdp-description-content">
+                     <h2>{{item}} 
+                    {% render 'icon-chevron-right'%}
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            {{content}}
+        {% endif %}
+        {% render 'judgeme_widgets', widget_type: 'judgeme_review_widget', concierge_install: false, product: product %}
+    </div>
+</div>
+
+{% unless product == empty %}
+    <script type="application/json" id="ProductJson-{{ section.id }}">
+        {{ product | json }}
+    </script>
+
+    <script type="application/json" id="ModelJson-{{ section.id }}">
+        {{ product.media | where: 'media_type', 'model' | json }}
+    </script>
+    
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+{% endunless %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+
+{% schema %}
+{
+    "name": {
+        "cs": "Stránky produktů",
+        "da": "Produktsider",
+        "de": "Produktseiten",
+        "en": "Product pages",
+        "es": "Páginas de productos",
+        "fi": "Tuotesivut",
+        "fr": "Pages de produits",
+        "it": "Pagine del prodotto",
+        "ja": "商品ページ",
+        "ko": "제품 페이지",
+        "nb": "Produktsider",
+        "nl": "Productpagina's",
+        "pl": "Strony produktu",
+        "pt-BR": "Páginas de produtos",
+        "pt-PT": "Páginas de produtos",
+        "sv": "Produktsidor",
+        "th": "หน้าสินค้า",
+        "tr": "Ürün sayfaları",
+        "vi": "Trang sản phẩm",
+        "zh-CN": "产品页面",
+        "zh-TW": "產品頁面"
+    },
+    "settings": [
+        {
+            "type": "range",
+            "id": "font_size",
+            "min": 12,
+            "max": 46,
+            "step": 1,
+            "unit": "px",
+            "label": "Product title font size",
+            "default": 36
+        },
+        {
+            "type": "checkbox",
+            "id": "show_quantity_selector",
+            "label": {
+                "cs": "Zobrazit výběr množství",
+                "da": "Vis antalsvælger",
+                "de": "Mengenauswahl anzeigen",
+                "en": "Show quantity selector",
+                "es": "Mostrar selector de cantidad",
+                "fi": "Näytä määrän valitsin",
+                "fr": "Afficher le sélecteur de quantité",
+                "it": "Mostra selettore quantità",
+                "ja": "数量セレクターを表示する",
+                "ko": "수량 선택기 표시",
+                "nb": "Vis mengdevelger",
+                "nl": "Hoeveelheidskiezer weergeven",
+                "pl": "Pokaż selektor ilości",
+                "pt-BR": "Exibir seletor de quantidade",
+                "pt-PT": "Mostrar um seletor de quantidade",
+                "sv": "Visa kvantitetsväljare",
+                "th": "แสดงตัวเลือกจำนวน",
+                "tr": "Adet seçiciyi göster",
+                "vi": "Hiển thị hộp chọn số lượng",
+                "zh-CN": "显示数量选择器",
+                "zh-TW": "顯示數量選擇器"
+            },
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "show_vendor",
+            "label": {
+                "cs": "Zobrazit dodavatele",
+                "da": "Vis leverandør",
+                "de": "Lieferanten anzeigen",
+                "en": "Show vendor",
+                "es": "Mostrar proveedor",
+                "fi": "Näytä myyjä",
+                "fr": "Afficher les vendeurs",
+                "it": "Mostra fornitore",
+                "ja": "販売元を表示する",
+                "ko": "공급업체 표시",
+                "nb": "Vis leverandør",
+                "nl": "Leverancier weergeven",
+                "pl": "Pokaż dostawcę",
+                "pt-BR": "Exibir fabricante",
+                "pt-PT": "Mostrar fornecedor",
+                "sv": "Visa säljare",
+                "th": "แสดงผู้ขาย",
+                "tr": "Satıcıyı göster",
+                "vi": "Hiển thị nhà cung cấp",
+                "zh-CN": "显示厂商",
+                "zh-TW": "顯示廠商"
+            },
+            "default": false
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_payment_button",
+            "label": {
+                "cs": "Zobrazit dynamické tlačítko pokladny",
+                "da": "Vis dynamisk betalingsknap",
+                "de": "Dynamischen Checkout Button anzeigen",
+                "en": "Show dynamic checkout button",
+                "es": "Mostrar botón de pago dinámico",
+                "fi": "Näytä dynaaminen kassapainike",
+                "fr": "Afficher le bouton de paiement dynamique",
+                "it": "Mostra pulsante di check-out dinamico",
+                "ja": "動的チェックアウトボタンを表示する",
+                "ko": "동적 결제 버튼 표시",
+                "nb": "Vis dynamisk knapp for å gå til kassen",
+                "nl": "Dynamische checkoutknop weergeven",
+                "pl": "Pokaż dynamiczny przycisk realizacji zakupu",
+                "pt-BR": "Exibir botão de checkout dinâmico",
+                "pt-PT": "Mostrar o botão dinâmico de finalização da compra",
+                "sv": "Visa dynamiska utcheckningsknappar",
+                "th": "แสดงปุ่มชำระเงินแบบไดนามิก",
+                "tr": "Dinamik ödeme düğmesini göster",
+                "vi": "Hiển thị nút thanh toán nhanh",
+                "zh-CN": "显示动态结账按钮",
+                "zh-TW": "顯示動態結帳按鈕"
+            },
+            "info": {
+                "cs": "Každý zákazník uvidí platební metodu, kterou ze všech metod dostupných v obchodě (například PayPal nebo Apple Pay) nejvíce preferuje. [Další informace](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "da": "Den enkelte kunde vil se sin foretrukne betalingsmetode blandt dem, der er tilgængelige i din butik, f.eks. PayPal eller Apple Pay. [Få mere at vide](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "de": "Jeder Kunde sieht seine bevorzugte Zahlungsmethode aus den in deinem Shop verfügbaren Zahlungsmethoden wie PayPal oder Apple Pay. [Mehr Informationen](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "en": "Each customer will see their preferred payment method from those available on your store, such as PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "es": "Cada cliente verá su forma de pago preferida entre las disponibles en tu tienda, como PayPal o Apple Pay. [Más información](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "fi": "Kukin asiakas näkee ensisijaisen valintansa kauppasi tarjoamista maksutavoista, esim. PayPal tai Apple Pay. [Lisätietoja](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "fr": "Chaque client verra son moyen de paiement préféré parmi ceux qui sont proposés sur votre boutique, tels que PayPal ou Apple Pay. [En savoir plus](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "it": "Ogni cliente vedrà il suo metodo di pagamento preferito tra quelli disponibili nel tuo negozio, come PayPal o Apple Pay. [Maggiori informazioni](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "ja": "PayPalやApple Payなど、ストアで利用可能な希望の決済方法がお客様に表示されます。[詳しくはこちら](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "ko": "각 고객은 PayPal 또는 Apple Pay와 같이 스토어에서 사용 가능한 지불 방법을 확인할 수 있습니다. [자세히 알아보기](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "nb": "Hver enkelt kunde vil se sin foretrukne betalingsmåte blant de som er tilgjengelig i butikken din, som PayPal eller Apple Pay. [Finn ut mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "nl": "Elke klant ziet zijn of haar beschikbare voorkeursmethode om af te rekenen, zoals PayPal of Apple Pay. [Meer informatie](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "pl": "Każdy klient zobaczy swoją preferowaną metodę płatności wśród metod dostępnych w Twoim sklepie, np. PayPal lub Apple Pay. [Dowiedz się więcej](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "pt-BR": "Cada cliente verá a forma de pagamento preferencial dele dentre as disponíveis na loja, como PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "pt-PT": "Cada cliente irá ver o seu método de pagamento preferido entre os disponíveis na loja, como o PayPal ou Apple Pay. [Saiba mais](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "sv": "Varje kund kommer att se den föredragna betalningsmetoden från de som finns tillgängliga i din butik, till exempel PayPal eller Apple Pay. [Läs mer](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "th": "ลูกค้าแต่ละรายจะเห็นวิธีการชำระเงินที่ต้องการจากวิธีที่ใช้ได้ในร้านค้าของคุณ เช่น PayPal หรือ Apple Pay [ดูข้อมูลเพิ่มเติม](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "tr": "Her müşteri, mağazanız sunulanlar arasından tercih ettikleri ödeme yöntemini görür (ör. PayPal veya Apple Pay). [Daha fazla bilgi edinin](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "vi": "Mỗi khách hàng sẽ thấy phương thức thanh toán ưu tiên trong những phương thức thanh toán được hỗ trợ tại cửa hàng như PayPal hoặc Apple Pay. [Tìm hiểu thêm](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "zh-CN": "每位客户都可在您商店提供的付款方式中看到他们的首选付款方式，例如 PayPal 或 Apple Pay。[了解详细信息](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)",
+                "zh-TW": "每位顧客都可以在您商店內開放使用的付款方式中看見他們偏好使用的方式，如 PayPal、Apple Pay 等。[深入瞭解](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
+            },
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "show_share_buttons",
+            "label": {
+                "cs": "Zobrazit tlačítka pro sdílení na sociálních sítích",
+                "da": "Vis knapper til deling på sociale medier",
+                "de": "Buttons für Social Media anzeigen",
+                "en": "Show social sharing buttons",
+                "es": "Mostrar botones para compartir en redes sociales",
+                "fi": "Näytä sosiaalisen median jakamispainikkeet",
+                "fr": "Affichez les boutons de partage sur les médias sociaux",
+                "it": "Mostra i pulsanti per la condivisione sui social",
+                "ja": "ソーシャルメディアでの共有ボタンを表示する",
+                "ko": "소셜 공유 버튼 표시",
+                "nb": "Vis knapper for deling på sosiale medier",
+                "nl": "Knoppen voor sociaal delen weergeven",
+                "pl": "Pokaż przyciski udostępniania w mediach społecznościowych",
+                "pt-BR": "Exibir botões de compartilhamento em redes sociais",
+                "pt-PT": "Mostrar botões de partilha nas redes sociais",
+                "sv": "Visa knappar för delning i sociala medier",
+                "th": "แสดงปุ่มสำหรับแชร์ลงโซเชียล",
+                "tr": "Sosyal medya paylaşım düğmelerini göster",
+                "vi": "Hiển thị nút chia sẻ qua mạng xã hội",
+                "zh-CN": "显示社交分享按钮",
+                "zh-TW": "顯示社群分享按鈕"
+            },
+            "default": true
+        },
+        {
+            "type": "text",
+            "id": "size",
+            "label": "Size"
+        },
+        {
+            "type": "text",
+            "id": "delivery_time",
+            "label": "Delivery time"
+        },
+        {
+            "type": "text",
+            "id": "translation_plus",
+            "label": "Translation 'Plus'"
+        },
+        {
+            "type": "text",
+            "id": "translation_shipping",
+            "label": "Translation 'Shipping'"
+        },
+        {
+            "type": "url",
+            "id": "url_shipping_page",
+            "label": "Link to the shipping's page"
+        },
+        {
+            "type": "text",
+            "id": "info_text_element_1",
+            "label": "Info text image 1"
+        },
+        {
+            "type": "text",
+            "id": "alt_text_element_1",
+            "label": "Alt text image 1"
+        },
+        {
+            "type": "text",
+            "id": "info_text_element_2",
+            "label": "Info text image 2"
+        },
+        {
+            "type": "text",
+            "id": "alt_text_element_2",
+            "label": "Alt text image 2"
+        },
+        {
+            "type": "text",
+            "id": "info_text_element_3",
+            "label": "Info text image 3"
+        },
+        {
+            "type": "text",
+            "id": "alt_text_element_3",
+            "label": "Alt text image 3"
+        },
+        {
+            "type": "text",
+            "id": "info_text_element_4",
+            "label": "Info text image 4"
+        },
+        {
+            "type": "text",
+            "id": "alt_text_element_4",
+            "label": "Alt text image 4"
+        }
+    ]
+}
+{% endschema %}

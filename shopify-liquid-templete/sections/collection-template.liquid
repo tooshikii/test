@@ -1,0 +1,205 @@
+{% assign relevance = section.settings.sorting_relevance %}
+{% assign ascending = section.settings.sorting_ascending %}
+{% assign descending = section.settings.sorting_descending %}
+{% assign new = section.settings.sorting_new %}
+{% assign description = section.settings.sorting_description %}
+{% assign available = section.settings.available_in %}
+
+{% render 'collection-banner' %}
+<div class="collection-container">
+    <div class="collection-filters">
+        <div class="collection-header__mobile">
+            <h1>{{ collection.title }}</h1>
+        </div>
+        <div class="collection-filters-header">
+            <div class="collection-filters-header__mobile" id="filter-menu">
+                {% render 'filter-icon-mobile' %}
+                <p>{{ section.settings.filter_title }}</p>
+            </div>
+            <a href="/collections/{{ collection.handle }}">{{ section.settings.filter_reset }}</a>
+            {% render 'collection-sorting', relevance: relevance, ascending: ascending, descending: descending, new: new, description: description %}
+        </div>
+        <div class="collection-filters-list">
+            <a href="/collections/{{ collection.handle }}">{{ section.settings.filter_reset }}</a>
+            {% render 'collection-filters', id: "variety" %}
+            {% render 'collection-filters', id: "line" %}
+            {% render 'collection-filters', id: "age" %}
+            <div class="collection-filters-list-mobile-button">
+                <button class="btn" type="button">
+                    <span>Mostra {{ collection.products_count }}
+                        {% if collection.products_count == 1 %}
+                            prodotto
+                        {% else %}
+                            prodotti{% endif %}
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <span class="collection-products-count">{{ collection.products_count }}
+        {% if collection.products_count == 1 %}
+            prodotto
+        {% else %}
+            prodotti
+        {% endif %}
+    </span>
+    <div class="collection-items">
+        <div class="collection-items-header">
+            <h1>{{ collection.title }}</h1>
+            <span>{{ collection.products_count }}
+                {% if collection.products_count == 1 %}
+                    prodotto
+                {% else %}
+                    prodotti
+                {% endif %}
+            </span>
+            {% render 'collection-sorting', relevance: relevance, ascending: ascending, descending: descending, new: new, description: description %}
+        </div>
+        {% if collection.products_count == 0 %}
+            <div class="collection-list-no-products">
+                <p>{{ section.settings.no_product_found }}</p>
+            </div>
+        {% else %}
+            {% render 'collection-product-card', available: available %}
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": {
+        "cs": "Stránky s kolekcemi",
+        "da": "Kollektionssider",
+        "de": "Kategorie-Seiten",
+        "en": "Collection pages",
+        "es": "Páginas de colección",
+        "fi": "Kokoelman sivut",
+        "fr": "Pages de collections",
+        "it": "Pagine di collezioni",
+        "ja": "コレクションページ",
+        "ko": "컬렉션 페이지",
+        "nb": "Samlingssider",
+        "nl": "Collectiepagina's",
+        "pl": "Strony kolekcji",
+        "pt-BR": "Páginas de coleções",
+        "pt-PT": "Páginas de coleções",
+        "sv": "Produktseriesidor",
+        "th": "หน้าคอลเลกชัน",
+        "tr": "Koleksiyon sayfaları",
+        "vi": "Trang bộ sưu tập",
+        "zh-CN": "产品系列页面",
+        "zh-TW": "商品系列頁面"
+    },
+    "settings": [
+        {
+            "type": "text",
+            "id": "filter_title",
+            "label": "Filter title"
+        },
+        {
+            "type": "text",
+            "id": "filter_reset",
+            "label": "Filter reset"
+        },
+        {
+            "type": "text",
+            "id": "no_product_found",
+            "label": "No product found"
+        },
+        {
+            "type": "text",
+            "id": "sorting_relevance",
+            "label": "Sorting relevance"
+        },
+        {
+            "type": "text",
+            "id": "sorting_ascending",
+            "label": "Sorting price ascending"
+        },
+        {
+            "type": "text",
+            "id": "sorting_descending",
+            "label": "Sorting price descending"
+        },
+        {
+            "type": "text",
+            "id": "sorting_new",
+            "label": "Sorting new in"
+        },
+        {
+            "type": "text",
+            "id": "sorting_description",
+            "label": "Sorting article description"
+        },
+        {
+            "type": "text",
+            "id": "available_in",
+            "label": "Available in"
+        },
+        {
+            "type": "checkbox",
+            "id": "show_banner",
+            "label": "Show banner"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_placeholder_desktop",
+            "label": "Banner placeholder desktop"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_placeholder_mobile",
+            "label": "Banner placeholder mobile"
+        },
+        {
+            "type": "header",
+            "content": "Ad Onsite"
+        },
+        {
+            "type": "checkbox",
+            "id": "display_ad_onsite",
+            "label": "Display Ad Onsite"
+        },
+        {
+            "type": "text",
+            "id": "card_ad_onsite_text_header",
+            "label": "Header text"
+        },
+        {
+            "type": "text",
+            "id": "card_ad_onsite_text_sub",
+            "label": "Header sub-header"
+        },
+        {
+            "type": "image_picker",
+            "id": "card_ad_onsite_image_desktop",
+            "label": "Image card Ad Onsite Desktop (not mandatory)"
+        },
+        {
+            "type": "image_picker",
+            "id": "card_ad_onsite_image_mobile",
+            "label": "Image card Ad Onsite Mobile (not mandatory)"
+        },
+        {
+            "type": "color",
+            "id": "card_ad_onsite_color",
+            "label": "Background color card Ad Onsite"
+        },
+        {
+            "type": "color",
+            "id": "card_ad_onsite_text_color",
+            "label": "Text color card Ad Onsite"
+        },
+        {
+            "type": "url",
+            "id": "card_ad_onsite_url",
+            "label": "Url card Ad Onsite (not mandatory)"
+        },
+        {
+            "type": "checkbox",
+            "id": "sale_gradient",
+            "label": "Sale image gradient"
+        }
+    ]
+}
+{% endschema %}

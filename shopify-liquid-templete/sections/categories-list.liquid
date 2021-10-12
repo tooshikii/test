@@ -1,0 +1,211 @@
+<div class="categories-list-container page-width">
+   <h2>{{ section.settings.title }}</h2>
+
+  <div class="categories-list-grid">
+    {% for block in section.blocks %}
+    <div class="category-box category-box__grid"
+     {%- if block.settings.link !="blank" -%}
+      onclick="location.href='{{ block.settings.link }}';"
+      style="cursor: pointer"
+      {% endif %}
+    >
+      {% if block.settings.image != blank %} {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      {%- if block.settings.image.width < max_width -%} {%- assign slide_width = block.settings.image.width -%} {%- endif -%} {%- if block.settings.image != blank -%}
+      <img
+        class="hero-fixed-width__image lazyload lazypreload"
+        data-src="{{ img_url }}"
+        data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+        data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+        data-sizes="auto"
+        style="{%- if slide_width <= max_width -%}
+                            {%- assign min_width = slide_width | times: 100 | divided_by: max_width -%}
+                            min-width: {{ min_width }}%;
+                        {%- endif -%}"
+        alt="{{ block.settings.image.alt | escape }}"
+      />
+      {%- else -%}
+      <span>
+        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+        {{ "lifestyle-" | append: current | placeholder_svg_tag: "placeholder-svg" }}
+      </span>
+      {%- endif -%} {% if block.settings.cta_label != blank %}
+      <div class="category-box__product-title">
+         <h3>{{ block.settings.cta_label }}</h3>
+      </div>
+        {%- endif -%} 
+     {%- endif -%}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+   "name":"Categories cards",
+   "class":"index-section index-section--flush",
+   "settings":[
+      {
+         "type":"text",
+         "id":"title",
+         "label":"Ttile"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"image",
+         "name":{
+            "cs":"Obrázek",
+            "da":"Billede",
+            "de":"Foto",
+            "en":"Image",
+            "es":"Imagen",
+            "fi":"Kuva",
+            "fr":"Image",
+            "it":"Immagine",
+            "ja":"画像",
+            "ko":"이미지",
+            "nb":"Bilde",
+            "nl":"Afbeelding",
+            "pl":"Obraz",
+            "pt-BR":"Imagem",
+            "pt-PT":"Imagem",
+            "sv":"Bild",
+            "th":"รูปภาพ",
+            "tr":"Görsel",
+            "vi":"Hình ảnh",
+            "zh-CN":"图片",
+            "zh-TW":"圖片"
+         },
+         "settings":[
+            {
+               "type":"image_picker",
+               "id":"image",
+               "label":{
+                  "cs":"Obrázek",
+                  "da":"Billede",
+                  "de":"Foto",
+                  "en":"Image",
+                  "es":"Imagen",
+                  "fi":"Kuva",
+                  "fr":"Image",
+                  "it":"Immagine",
+                  "ja":"画像",
+                  "ko":"이미지",
+                  "nb":"Bilde",
+                  "nl":"Afbeelding",
+                  "pl":"Obraz",
+                  "pt-BR":"Imagem",
+                  "pt-PT":"Imagem",
+                  "sv":"Bild",
+                  "th":"รูปภาพ",
+                  "tr":"Görsel",
+                  "vi":"Hình ảnh",
+                  "zh-CN":"图片",
+                  "zh-TW":"圖片"
+               }
+            },
+            {
+               "type":"url",
+               "id":"link",
+               "label":{
+                  "cs":"Odkaz",
+                  "da":"Link",
+                  "de":"Link",
+                  "en":"Link",
+                  "es":"Enlace",
+                  "fi":"Linkki",
+                  "fr":"Lien",
+                  "it":"Link",
+                  "ja":"リンク",
+                  "ko":"링크",
+                  "nb":"Kobling",
+                  "nl":"Link",
+                  "pl":"Link",
+                  "pt-BR":"Link",
+                  "pt-PT":"Ligação",
+                  "sv":"Länk",
+                  "th":"ลิงก์",
+                  "tr":"Bağlantı",
+                  "vi":"Liên kết",
+                  "zh-CN":"链接",
+                  "zh-TW":"連結"
+               },
+               "info":{
+                  "cs":"Volitelné",
+                  "da":"Valgfri",
+                  "de":"Optional",
+                  "en":"Optional",
+                  "es":"Opcional",
+                  "fi":"Valinnainen",
+                  "fr":"Facultatif",
+                  "it":"Facoltativo",
+                  "ja":"オプション",
+                  "ko":"선택 사항",
+                  "nb":"Valgfritt",
+                  "nl":"Optioneel",
+                  "pl":"Opcjonalnie",
+                  "pt-BR":"Opcional",
+                  "pt-PT":"Opcional",
+                  "sv":"Valfritt",
+                  "th":"ไม่จำเป็น",
+                  "tr":"İsteğe bağlı",
+                  "vi":"Không bắt buộc",
+                  "zh-CN":"可选",
+                  "zh-TW":"(選填)"
+               }
+            },
+            {
+               "type":"text",
+               "id":"cta_label",
+               "label":{
+                  "cs":"Titulek",
+                  "da":"Billedtekst",
+                  "de":"Unterschrift",
+                  "en":"Caption",
+                  "es":"Leyenda",
+                  "fi":"Kuvateksti",
+                  "fr":"Légende",
+                  "it":"Didascalia",
+                  "ja":"キャプション",
+                  "ko":"캡션",
+                  "nb":"Bildetekst",
+                  "nl":"Bijschrift",
+                  "pl":"Napisy",
+                  "pt-BR":"Legenda",
+                  "pt-PT":"Legenda",
+                  "sv":"Rubrik",
+                  "th":"คำบรรยาย",
+                  "tr":"Alt yazı",
+                  "vi":"Phụ đề",
+                  "zh-CN":"字幕",
+                  "zh-TW":"說明"
+               }
+            }
+         ]
+      }
+   ],
+   "presets":[
+      {
+         "name":"Categories cards",
+         "category":"ADVANCED LAYOUT",
+         "blocks":[
+            {
+               "type":"image"
+            },
+            {
+               "type":"image"
+            },
+            {
+               "type":"image"
+            },
+            {
+               "type":"image"
+            },
+            {
+               "type":"image"
+            }
+         ]
+      }
+   ]
+}
+{% endschema %}

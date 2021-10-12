@@ -1,0 +1,47 @@
+<div class="footer-signin-login">
+    <div class="footer-signin-login__container">
+        <div class="footer-signin-login__element">
+            <h4>{{ 'custom.login_and_registration_pages.footer_block_1_header' | t }}</h4>
+            <div class="footer-signin-login__element-description">
+                {% render 'icon-check-sign' %}
+                <p>{{ 'custom.login_and_registration_pages.footer_block_1_text_1' | t }} <br/>
+                {{ 'custom.login_and_registration_pages.footer_block_1_text_2' | t }}</p>
+            </div>
+            <div class="footer-signin-login__element-description">
+                {% render 'icon-check-sign' %}
+                <p>{{ 'custom.login_and_registration_pages.footer_block_1_text_3' | t }} <br/>
+                {{ 'custom.login_and_registration_pages.footer_block_1_text_4' | t }}</p>
+            </div>
+        </div>
+        <div class="footer-signin-login__element">
+            <h4>{{ 'custom.login_and_registration_pages.footer_block_2_header' | t }}</h4>
+            <div class="footer-signin-login__element-description">
+                {% render 'icon-check-sign' %}
+                <p>{{ 'custom.login_and_registration_pages.footer_block_2_text_1' | t }}</p>
+            </div>
+            <!-- <div class="footer-signin-login__element-description">
+                {% render 'icon-check-sign' %}
+                <p>{{ 'custom.login_and_registration_pages.footer_block_2_text_2' | t }}</p>
+            </div> -->
+            <!-- <div class="footer-signin-login__element-description">
+                {% render 'icon-check-sign' %}
+                <p>{{ 'custom.login_and_registration_pages.footer_block_2_text_3' | t }}</p>
+            </div> -->
+        </div>
+        <div class="footer-signin-login__element">
+            <h4>{{ 'custom.login_and_registration_pages.footer_block_3_header' | t }}</h4>
+            <span class="visually-hidden">{{ "general.payment.method" | t }}</span>
+            <ul class="payment-icons list--inline site-footer__icon-list">
+                {%- for type in shop.enabled_payment_types -%}
+                    <li class="payment-icon">
+                        {{ type | payment_type_svg_tag: class: "icon icon--full-color" }}
+                    </li>
+                {%- endfor -%}
+            </ul>
+            <div class="footer-signin-login__element-description icon-lock">
+                {% render 'icon-lock-pd' %}
+                <p>{{ 'custom.login_and_registration_pages.footer_block_3_text_1' | t }}</p>
+            </div>
+        </div>
+    </div>
+</div>

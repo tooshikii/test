@@ -1,0 +1,90 @@
+{% case id %}
+    {% when "variety" %}
+        {% assign tags = "Rind Huhn Green Fisch Geflügel Ente Hirsch Lamm Wild Lachs Forelle Thunfisch" | split: " " %}
+        {% assign id_translate = 'Tipo' %}
+    {% when "line" %}
+        {% assign tags = "Getreidefrei Glutenfrei Hypoallergen/-Sensitiv Light Kaltgepresst Zuckerfrei Monoprotein" | split: " " %}
+        {% assign id_translate = 'Alimentazione' %}
+    {% when "age" %}
+        {% assign tags = "Adult Junior Senior" | split: " " %}
+        {% assign id_translate = 'Fascia di età' %}
+{% endcase %}
+
+<p>{{ id_translate | capitalize }}</p>
+<ul id="filter-{{ id }}">
+    {% for tag in tags %}
+
+        {% case tag %}
+            {% when "Rind" %}
+                {% assign tag_name = "Manzo" %}
+            {% when "Huhn" %}
+                {% assign tag_name = "Pollo" %}
+            {% when "Green" %}
+                {% assign tag_name = "Verde" %}
+            {% when "Fisch" %}
+                {% assign tag_name = "Pesce" %}
+            {% when "Geflügel" %}
+                {% assign tag_name = "Pollame" %}
+            {% when "Ente" %}
+                {% assign tag_name = "Anatra" %}
+            {% when "Hirsch" %}
+                {% assign tag_name = "Cervo" %}
+            {% when "Lamm" %}
+                {% assign tag_name = "Agnello" %}
+            {% when "Wild" %}
+                {% assign tag_name = "Selvaggina" %}
+            {% when "Lachs" %}
+                {% assign tag_name = "Salmone" %}
+            {% when "Forelle" %}
+                {% assign tag_name = "Trota" %}
+            {% when "Thunfisch" %}
+                {% assign tag_name = "Tonno" %}
+            {% when "Getreidefrei" %}
+                {% assign tag_name = "Senza cereali" %}
+            {% when "Glutenfrei" %}
+                {% assign tag_name = "Senza glutine" %}
+            {% when "Hypoallergen/-Sensitiv" %}
+                {% assign tag_name = "HIpoallergenico/Sensibile" %}
+            {% when "Light" %}
+                {% assign tag_name = "Leggero" %}
+            {% when "Kaltgepresst" %}
+                {% assign tag_name = "Pressato a freddo" %}
+            {% when "Zuckerfrei" %}
+                {% assign tag_name = "Senza zucchero" %}
+            {% when "Monoprotein" %}
+                {% assign tag_name = "Monoproteina" %}
+            {% when "Adult" %}
+                {% assign tag_name = "Aduto" %}
+            {% when "Junior" %}
+                {% assign tag_name = "Junior" %}
+            {% when "Senior" %}
+                {% assign tag_name = "Senior" %}
+            {% else %}
+                {% assign tag_name = tag %}
+        {% endcase %}
+
+        {% for product_tag in collection.all_tags %}
+            {% if tag == product_tag %}
+                {% if current_tags contains tag %}
+                    <li
+                        class="collection-filters-list__item active"
+                        onclick="location.href='/collections/'">
+                        <div class="collection-filters-list__box active">
+                            {% render 'checkbox' %}
+                        </div>
+                        {{ tag_name | link_to_remove_tag: tag }}
+                        {{ tag_name }}
+                    </li>
+                {% else %}
+                    <li
+                        class="collection-filters-list__item"
+                        onclick="location.href='/collections/'">
+                        <div class="collection-filters-list__box"></div>
+                        {{ tag_name | link_to_add_tag: tag }}
+                        {{ tag_name }}
+                    </li>
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</ul>

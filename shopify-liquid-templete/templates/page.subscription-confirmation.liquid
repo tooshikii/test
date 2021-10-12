@@ -1,0 +1,33 @@
+<div class="page-width">
+  <div class="grid">
+    <div class="grid__item medium-up--five-sixths medium-up--push-one-twelfth">
+      <div class="section-header text-center">
+        <h1>{{ page.content }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+((subscriptionConfirmation) => {
+  const emailMatch = window.location.href.match(/uniqueId=([^&]+)/i);
+  const url = "https://api.petsdeli.de/default/marketingDoubleOptIn/";
+  const params = {
+    shopId: "IT",
+    email: emailMatch[1],
+  };
+
+  const redirect = (result) => {
+    if (result == 200) {
+      window.location.href = "/";
+    }
+  };
+
+  axios
+    .get(url, { params })
+    .then((response) => {
+      redirect(response.status);
+    })
+    .catch((err) => console.log(err));
+})();
+</script>

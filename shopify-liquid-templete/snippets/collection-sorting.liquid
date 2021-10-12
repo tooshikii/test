@@ -1,0 +1,11 @@
+<div class="collection-items-header-sorting">
+    {% render 'icon-swap-vertical' %}
+    <select id="SortBy" name="SortBy">
+        <option value="">{{ relevance }}</option>
+        <option value="price-ascending" {% if "price-ascending" == collection.sort_by %} selected {% endif %}>{{ ascending }}</option>
+        <option value="price-descending" {% if "price-descending" == collection.sort_by %} selected {% endif %}>{{ descending }}</option>
+        <option value="new" {% if "new" == collection.sort_by %} selected {% endif %}>{{ new }}</option>
+        <option value="title" {% if "title" == collection.sort_by %} selected {% endif %}>{{ description }}</option>
+    </select>
+    {% render 'icon-chevron-down' %}
+</div>

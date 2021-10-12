@@ -1,0 +1,118 @@
+{% if section.settings.sale_gradient%}
+    {% assign image_gradient = "linear-gradient(0deg, rgba(255, 87, 104, 0.85), rgba(255, 87, 104, 0.85))"%}
+{% else %}
+    {% assign image_gradient = "linear-gradient(0deg, rgba(23, 51, 90, 0.85), rgba(23, 51, 90, 0.85))"%}
+{% endif %}
+<style>
+    .ad-onsite-card {
+        background-color: {{ section.settings.card_ad_onsite_color }};
+        color: {{ section.settings.card_ad_onsite_text_color }};
+    }
+
+    @media only screen and (min-width: 1024px) {
+        .ad-onsite-card-background-desktop { 
+            background: {{ image_gradient }}, url({{ section.settings.card_ad_onsite_image_desktop | img_url }});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;    
+        }
+    }
+    @media only screen and (max-width: 1023px) {
+        .ad-onsite-card-background-mobile { 
+            background: {{ image_gradient }}, url({{ section.settings.card_ad_onsite_image_mobile | img_url }});
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+    }
+
+</style>
+
+<div class="collection-list-grid">
+    {% for product in collection.products %}
+        <div
+            class="collection-product-card collection-item__grid"
+            onclick="location.href='{{ product.url }}';"
+            style="cursor: pointer">
+            {% render 'ribbon' with product as product %}
+            {% if
+    product.featured_media.preview_image != blank %}
+                {%- assign img_url =
+    product.featured_media.preview_image | img_url: '1x1' | replace: '_1x1.',
+    '_{width}x.' -%}
+                {%- if product.featured_media.preview_image.width <
+    max_width -%}
+                    {%- assign slide_width =
+    product.featured_media.preview_image.width -%}
+                {%- endif -%}
+                {%- if
+    product.featured_media.preview_image != blank -%}
+                    <div
+                        class="product-card__image-with-placeholder-wrapper
+                            collection-product-card__image"
+                        data-image-loading-animation>
+                        <div id="{{ wrapper_id }}" class="grid-view-item__image-wrapper product-card__image-wrapper js">
+                            <div style="padding-top:{% unless preview_image == blank %}{{ 1 | divided_by:
+                                    preview_image.aspect_ratio | times: 100 }}%{% else %}100%{% endunless %};">
+                                <img id="{{ img_id }}" class="grid-view-item__image lazyload" alt="{{ preview_image.alt }}" data-src="{{ img_url }}" data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]" data-aspectratio="{{ preview_image.aspect_ratio }}" data-sizes="auto" data-image>
+                            </div>
+                        </div>
+                    </div>
+                    <div aria-hidden="true" class="collection-product-card__infos">
+                        <div class="collection-product-card__title">
+                            {% if product.metafields.accentuate.main_title %}
+                                <h3>{{ product.metafields.accentuate.main_title }}</h3>
+                            {% else %}
+                                <h3>{{ product.title }}</h3>
+                            {% endif %}
+                        </div>
+                        {% if product.metafields.judgeme.badge %}
+                            <div style='{{ jm_style }} text-align: center; margin-bottom: 0.5rem' class="jdgm-widget jdgm-preview-badge" data-id='{{ product.id }}'>
+                                {{ product.metafields.judgeme.badge }}
+                            </div>
+                        {% endif %}
+                        {% if product.metafields.accentuate.sub_title %}
+                            <div class="collection-product-card__sub-title">
+                                <p>{{ product.metafields.accentuate.sub_title }}</p>
+                            </div>
+                        {% endif %}
+                        <div class="collection-product-card__price">
+                            {% render 'product-price-bestseller', product: product, show_vendor:
+        show_vendor %}
+                        </div>
+                    </div>
+                    <div class="collection-product-card-variants">
+                        <p>{{ available | upcase }}</p>
+                        {% for product_option in product.options_with_values %}
+                            {% if
+      product_option.name == "Größe" %}
+                                <ul>
+                                    {% for value in product_option.values %}
+                                        <li>{{ value }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {%- else -%}
+                    <span>
+                        {% capture current %}
+                            {% cycle 1, 2 %}
+                        {% endcapture %}
+                        {{
+        "lifestyle-" | append: current | placeholder_svg_tag: "placeholder-svg"
+      }}
+                    </span>
+                {%- endif -%}
+            {%- endif -%}
+            {% render 'icon-chevron-right' %}
+        </div>
+    {% endfor %}
+    {% if section.settings.display_ad_onsite %}
+        <div id="on-site-card" class="collection-product-card collection-item__grid ad-onsite-card{% if section.settings.card_ad_onsite_image_desktop %} ad-onsite-card-background-desktop{% endif %}
+                                                                                                                {% if section.settings.card_ad_onsite_image_mobile %} ad-onsite-card-background-mobile{% endif %}" {% if section.settings.card_ad_onsite_url %} onclick="location.href='{{ section.settings.card_ad_onsite_url }}';" style="cursor: pointer" {% endif %}>
+            <h3>{{ section.settings.card_ad_onsite_text_header}}</h3>
+            <span>{{ section.settings.card_ad_onsite_text_sub}}</span>
+        </div>
+    {% endif %}
+</div>

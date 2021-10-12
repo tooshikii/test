@@ -1,0 +1,71 @@
+<!-- Banner home CSS starts -->
+<style>
+
+  .banner-home-content {
+    background-color: {{ section.settings.background_color }};
+  }
+   .banner-home-tag {
+    background-color: {{ section.settings.tag_color }};
+  }
+
+  .banner-home-tag p {
+    color: {{ section.settings.tag_text_color }};
+  }  
+  
+  .banner-home-text h1 {
+    color: {{ section.settings.font_color_header }};
+  }
+
+  .banner-home-text p {
+    color: {{ section.settings.font_color_text }};
+  }
+  }
+</style>
+<!-- Banner home CSS ends -->
+
+<!-- Banner home section starts -->
+<div class="banner-home-container page-width"
+  {%- if section.settings.banner_link != blank -%}
+   onclick="location.href='{{ section.settings.banner_link }}';" style="cursor: pointer;"
+   {% endif %}
+            >
+  {% if section.settings.show_tag %}
+  <div class="banner-home-tag">
+    <p>{{ section.settings.tag_text }}</p>
+  </div>
+  {% endif %}
+
+  <div class="banner-home-image">
+    {%- assign img_url = section.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    {%- if section.settings.image.width < max_width -%}
+      {%- assign slide_width = section.settings.image.width -%}
+    {%- endif -%}
+      {%- if section.settings.image != blank -%}
+      <img class="hero-fixed-width__image lazyload lazypreload"
+          data-src="{{ img_url }}"
+          data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+          data-aspectratio="{{ section.settings.image.aspect_ratio }}"
+          data-sizes="auto"
+          style="{%- if slide_width <= max_width -%}
+                    {%- assign min_width = slide_width | times: 100 | divided_by: max_width -%}
+                    min-width: {{ min_width }}%;
+                  {%- endif -%}"
+          alt="{{ section.settings.image.alt | escape }}">
+    {%- else -%}
+      <span>
+        {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+        {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+      </span>
+    {%- endif -%}
+   
+  </div>
+  <div class="banner-home-content">
+    <div class="banner-home-text">
+      <h1>{{ section.settings.title }}</h1>
+        {{ section.settings.text }}
+      {%- if section.settings.button_label != blank -%}
+        <button type="button" class="btn-pd btn-pd-blue">{{ section.settings.button_label | upcase }}</button>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

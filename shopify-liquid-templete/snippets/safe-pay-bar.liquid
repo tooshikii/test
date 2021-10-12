@@ -1,0 +1,13 @@
+<div class="account-page-top-bar">
+    <div
+        class="account-page-top-bar__container"
+        onclick="location.href='{{ routes.root_url }}';">
+        <div class="account-page-top-bar__element">
+            {% render 'logo' %}
+            <span>{{ 'custom.login_and_registration_pages.text_banner' | t }}</span>
+        </div>
+        <div class="account-page-top-bar__element">
+            <img src="{{ 'trusted_shop-seal.png' | asset_url }}" valt="Trusted Shop Seal" />
+        </div>
+    </div>
+</div>
