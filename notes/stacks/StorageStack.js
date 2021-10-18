@@ -16,7 +16,7 @@ export default class StorageStack extends sst.Stack {
     this.bucket = new sst.Bucket(this, "Uploads");
 
     // Create the DynamoDB table
-    this.create = new sst.Table(this, "Notes", {
+    this.table = new sst.Table(this, "Notes", {
       fields : {
         userId : sst.TableFieldType.STRING,
         noteId : sst.TableFieldType.STRING
