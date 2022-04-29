@@ -17,8 +17,8 @@ const Links: Array<LinkType> = [
     path: "about-us",
   },
   {
-    displayName: "EDUCATE",
-    path: "educate",
+    displayName: "RESIDENTS",
+    path: "residents",
   },
   {
     displayName: "CONTACT",
@@ -36,7 +36,9 @@ const MenuBackdrop = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className={"  bg-black/50 fixed top-0 right-0 z-50 w-screen h-screen"}
+          className={
+            "  bg-black/50 fixed top-0 right-0 z-50 w-screen h-screen  text-brand-theme"
+          }
         >
           <button
             className="absolute top-0 right-0 p-4 "
@@ -48,13 +50,18 @@ const MenuBackdrop = () => {
           </button>
           <div
             className={
-              "m-auto max-w-md text-brand-theme text-5xl bold flex justify-center  items-center"
+              "m-auto max-w-md text-brand-theme text-5xl bold flex justify-center  items-center h-screen"
             }
           >
-            <div className="flex flex-col min-h-[80vh] ">
+            <div className="flex flex-col ">
               {Links.map((link) => (
                 <Link href={`/${link.path}`} key={link.path} passHref>
-                  <a onClick={() => setIsOpen(false)}>{link.displayName}</a>
+                  <a
+                    className="text-8xl font-dry"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {link.displayName}
+                  </a>
                 </Link>
               ))}
               <SnsLinks
@@ -63,12 +70,12 @@ const MenuBackdrop = () => {
               />
               <div className={" text-xs"}>
                 <Link href={`/imprint`} passHref>
-                  <a onClick={() => setIsOpen(false)} className={"p-2"}>
+                  <a onClick={() => setIsOpen(false)} className={"m-2 ml-0"}>
                     IMPRINT
                   </a>
                 </Link>
                 <Link href={`/data-protection`} passHref>
-                  <a onClick={() => setIsOpen(false)} className={"p-2"}>
+                  <a onClick={() => setIsOpen(false)} className={"m-2"}>
                     DATA PROTECTION
                   </a>
                 </Link>

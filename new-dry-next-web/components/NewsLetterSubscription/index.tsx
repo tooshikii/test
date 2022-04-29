@@ -30,7 +30,7 @@ const NewsLetterSubscription: React.ComponentType = () => {
   }, []);
 
   return (
-    <div className={"w-full "}>
+    <div className={"w-full  bg-brand-theme"}>
       <div className={"m-auto"}>
         <div
           style={{ fontFamily: '"DRYCUSTOM"', letterSpacing: 1 }}

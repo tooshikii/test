@@ -9,7 +9,7 @@ const Footer: React.ComponentType = () => {
       <NewsLetterSubscription />
       <div
         style={{ letterSpacing: 1 }}
-        className={`mx-2.5 text-center text-black flex justify-between text-xs `}
+        className={`mx-2.5 text-center text-black flex justify-between text-xs  bg-brand-theme `}
       >
         <div className={"flex items-center text-xxs"}>
           <span>

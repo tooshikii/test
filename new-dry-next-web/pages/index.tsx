@@ -1,10 +1,8 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import Link from "next/link";
 import React from "react";
 import StyleComp from "../components/Style";
-import TitleWithOrnament from "../components/TitleWithOrnament";
 import { initializeApollo } from "../lib/apollo";
 import { TopPageQuery } from "../src/generated/graphql";
 
@@ -30,7 +28,7 @@ const Home: React.ComponentType<TopPageProps> = (props: TopPageProps) => {
         {/* TODO : Until we know how to make it work for sources tags without extension, use isVideo as a work-around   */}
         {isVideo ? (
           <video
-            className={"w-full h-full object-fill"}
+            className={"w-full h-[calc(100vh_-_50px)] object-fill"}
             controls={false}
             autoPlay
             loop
@@ -42,7 +40,7 @@ const Home: React.ComponentType<TopPageProps> = (props: TopPageProps) => {
         ) : (
           <>
             {topImage?.url && (
-              <div className="w-full min-h-screen">
+              <div className="w-full h-[calc(100vh_-_50px)]">
                 <Image
                   priority
                   src={topImage?.url}
@@ -54,11 +52,11 @@ const Home: React.ComponentType<TopPageProps> = (props: TopPageProps) => {
             )}
           </>
         )}
-        <div className="absolute top-0 flex flex-col items-center w-full py-4 text-white md:items-end md:w-auto md:justify-center md:flex-row md:bottom-0 ">
+        {/* <div className="absolute top-0 flex flex-col items-center w-full py-4 text-white md:items-end md:w-auto md:justify-center md:flex-row md:bottom-0 ">
           <TitleWithOrnament className={"mx-4 text-shadow"}>
             <Link href={"/residents"}> RESIDENTS </Link>
           </TitleWithOrnament>
-        </div>
+        </div> */}
       </div>
     </StyleComp>
   );

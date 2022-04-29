@@ -1,7 +1,5 @@
-import NextImage from "next/image";
+import Image from "next/image";
 import React from "react";
-import { myLoader } from "../Image";
-
 interface CommonLayoutProps {
   videoSrc?: string;
   assetSrc?: string;
@@ -30,17 +28,17 @@ const CommonLayout: React.ComponentType<CommonLayoutProps> = ({
       )}
       {!videoSrc && assetSrc && (
         <div className={`w-full relative`} style={{ height: 450 }}>
-          <NextImage
-            loader={myLoader}
+          <Image
             src={assetSrc}
-            className={`animate-blur-in duration-2000 object-cover rounded-br-3xl`}
+            className={`rounded-md`}
+            objectFit={"cover"}
             layout="fill"
           />
         </div>
       )}
-      <div className="container ">
+      <div className="container m-auto">
         <div className={`my-6 flex  flex-col lg:flex-row`}>
-          <div className="grow">{menuSection}</div>
+          <div className="pt-5 grow">{menuSection}</div>
           <div className={" grow-[2]  basis-[70%] content"}>
             {contentSection}
           </div>

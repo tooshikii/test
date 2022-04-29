@@ -14,7 +14,7 @@ const AppHeader: React.ComponentType<AppHeaderProps> = () => {
   };
 
   return (
-    <div className="h-[50px] w-full top-0 fixed z-20 bg-brand-theme">
+    <div className="h-[50px] w-full top-0 fixed z-20 bg-brand-theme shadow-sm">
       <div className={"flex justify-between p-2"}>
         <div className="flex content-center justify-between">
           <DryLogo onClick={() => router.push("/")} />
@@ -34,7 +34,7 @@ const AppHeader: React.ComponentType<AppHeaderProps> = () => {
           className={"hidden md:block"}
         />
         <div
-          className={`flex items-center  text-center text-[7px] text-black space-x-1`}
+          className={`md:flex items-center  text-center text-[7px] text-black space-x-1 hidden `}
         >
           <span>
             DRY / ALL RIGHTS <br />

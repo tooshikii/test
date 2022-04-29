@@ -39,7 +39,7 @@ const SnsLinks: React.ComponentType<SnsLinksProps> = ({
           <a
             key={link[1]}
             target={"_blank"}
-            className={"h-6 w-6 m-2"}
+            className={"h-6 w-6 m-2 last:mr-0 first:ml-0"}
             href={link[1]}
             rel="noreferrer"
           >

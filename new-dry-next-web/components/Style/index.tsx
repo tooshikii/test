@@ -17,7 +17,7 @@ const StyleComp: React.ComponentType<StyleCompProps> = ({
   header,
 }: StyleCompProps) => {
   return (
-    <div>
+    <div className="">
       <Head>
         <title>DRY BERLIN {header && `| ${header.title}`}</title>
         <meta
@@ -34,7 +34,7 @@ const StyleComp: React.ComponentType<StyleCompProps> = ({
       <MenuBackdrop />
       <AppHeader />
       <main>
-        <div className={"mt-[50px]  min-h-[calc(100vh_- _50px]"}>
+        <div className={"mt-[50px] min-h-[calc(100vh_-_50px)]  bg-brand-theme"}>
           {children}
         </div>
       </main>

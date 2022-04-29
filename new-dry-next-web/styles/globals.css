@@ -32,11 +32,14 @@ a {
   box-sizing: border-box;
 }
 
-.ornament ::before{
+.ornament {
+ position: relative;
+}
+.ornament::before{
   content: url("/icons/ornament_resized.svg");
   position: absolute;
   width: 0.5em;
-  top: -35px;
+  top: -40px;
 }
 
 /* for normalizing padding first element in injected html  */
@@ -49,6 +52,6 @@ a {
   height: 200px !important;
 }
 .mediaWrapper iframe {
-  width: 200px !important;
+  width: 100% !important;
 }
 

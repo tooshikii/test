@@ -1,11 +1,11 @@
 import cn from "classnames";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
-import React, { useLayoutEffect, useState } from "react";
+import Image from "next/image";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import CommonLayout from "../../components/CommonLayout";
-import Image from "../../components/Image";
 import SnsLinks from "../../components/SnsLinks";
 import StyleComp from "../../components/Style";
 import TitleWithOrnament from "../../components/TitleWithOrnament";
@@ -38,7 +38,10 @@ const Residents: React.ComponentType<ResidentsProps> = ({
 
   // Delay bandcamp iframe until DOM is rendered
   const [showBC, setShowBC] = useState<boolean>(false);
-  useLayoutEffect(() => {
+
+  const effect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+  effect(() => {
     setShowBC(true);
   }, []);
 
@@ -65,8 +68,8 @@ const Residents: React.ComponentType<ResidentsProps> = ({
               <p className="mb-4 text-3xl font-bold">
                 {teamMember && teamMember.name}
               </p>
-              <div className={"flex"}>
-                <div>
+              <div className={"flex  flex-col lg:flex-row"}>
+                <div className="m-auto mb-4">
                   <Carousel
                     responsive={SINGLE_PIC_RESPONSIVE}
                     arrows
@@ -74,13 +77,19 @@ const Residents: React.ComponentType<ResidentsProps> = ({
                   >
                     {teamMember?.photos.map((photo) => (
                       <div
-                        className={`w-[350px] h-[350px] rounded-md`}
+                        className={`w-[350px] h-[350px] border  border-brand-line rounded-md`}
                         key={photo.url}
                       >
                         <Image
                           src={photo.url}
-                          className={`rounded-md`}
+                          className={`rounded-md blur-sm`}
                           objectFit={"cover"}
+                          layout="fill"
+                        />
+                        <Image
+                          src={photo.url}
+                          className={`rounded-md`}
+                          objectFit={"contain"}
                           layout="fill"
                         />
                       </div>
@@ -88,14 +97,17 @@ const Residents: React.ComponentType<ResidentsProps> = ({
                   </Carousel>
                 </div>
                 {teamMember && teamMember.bio && (
-                  <div>
+                  <div className="">
                     <div
                       className={"normalizeRichText"}
                       dangerouslySetInnerHTML={{
                         __html: teamMember.bio.html,
                       }}
                     />
-                    <SnsLinks SnsMap={teamMember.accountLinks} />
+                    <SnsLinks
+                      className="flex"
+                      SnsMap={teamMember.accountLinks}
+                    />
                   </div>
                 )}
               </div>
@@ -114,7 +126,7 @@ const Residents: React.ComponentType<ResidentsProps> = ({
                       key={happening.slugId}
                       role={"link"}
                       className={cn(
-                        "border-t   border-brand-line flex justify-between px-3 last:border-b ",
+                        " max-w-4xl m-auto border-t   border-brand-line flex justify-between px-3 last:border-b ",
                         isEducate(happening.eventType) &&
                           "hover:text-black cursor-pointer"
                       )}
@@ -133,7 +145,7 @@ const Residents: React.ComponentType<ResidentsProps> = ({
             )}
             <div>
               <p className="pb-8 mb-4 text-2xl font-bold">RELEASES</p>
-              <div className={"flex justify-start  flex-wrap"}>
+              <div className={"flex  flex-wrap justify-evenly"}>
                 {teamMember.releases.map((release) => (
                   <>
                     {showBC && (

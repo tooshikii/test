@@ -18,10 +18,10 @@ const CustomButtonGroup: React.ComponentType<CustomButtonGroupProps> = ({
         className={currentSlide === 0 ? "disable" : ""}
         onClick={() => previous()}
       >
-        <ArrowBackIosIcon />
+        <ArrowBackIosIcon className={"w-8 h-8"} />
       </button>
       <button onClick={() => next()}>
-        <ArrowForwardIosIcon />
+        <ArrowForwardIosIcon className={"w-8 h-8"} />
       </button>
     </div>
   );

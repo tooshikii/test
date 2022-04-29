@@ -65,11 +65,7 @@ const AboutUs: React.ComponentType<AboutUsProps> = ({
     >
       <CommonLayout
         assetSrc={aboutUs.mainPic?.url}
-        menuSection={
-          <div>
-            <TitleWithOrnament>ABOUT</TitleWithOrnament>
-          </div>
-        }
+        menuSection={<TitleWithOrnament>ABOUT</TitleWithOrnament>}
         contentSection={
           <div
             dangerouslySetInnerHTML={{ __html: aboutUs.aboutUsText.html }}

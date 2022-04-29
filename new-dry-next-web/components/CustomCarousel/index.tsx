@@ -2,7 +2,6 @@ import React, { useMemo } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import Image from "../Image";
-import CustomButtonGroup from "./CustomButtonGroup";
 
 interface itemDetails {
   id: string;
@@ -26,7 +25,7 @@ const CustomCarousel: React.ComponentType<CustomCarouselProps> = ({
       },
       tablet: {
         breakpoint: { max: 976, min: 480 },
-        items: 3,
+        items: 2,
       },
       mobile: {
         breakpoint: { max: 480, min: 0 },
@@ -38,10 +37,11 @@ const CustomCarousel: React.ComponentType<CustomCarouselProps> = ({
   return (
     <div className={"bg-black py-6 relative"}>
       <Carousel
-        arrows={false}
+        arrows={true}
         responsive={responsive}
-        customButtonGroup={<CustomButtonGroup />}
-        renderButtonGroupOutside={true}
+        autoPlay={false}
+        shouldResetAutoplay={false}
+        infinite={true}
       >
         {items.map((item) => (
           <div className="flex items-center justify-center" key={item.id}>
