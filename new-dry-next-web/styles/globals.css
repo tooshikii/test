@@ -32,6 +32,13 @@ a {
   box-sizing: border-box;
 }
 
+.ornament ::before{
+  content: url("/icons/ornament_resized.svg");
+  position: absolute;
+  width: 0.5em;
+  top: -35px;
+}
+
 /* for normalizing padding first element in injected html  */
 .normalizeRichText > *:first-child{
   margin-top : 0px

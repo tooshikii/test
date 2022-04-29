@@ -10,6 +10,13 @@ module.exports = {
       fontSize : {
         xxs : '0.5rem'
       },
+      colors: {
+        'brand-line' : '#464646',
+        'brand-theme' : "#ececec"
+      },
+      fontFamily : {
+        dry : ['DRYCUSTOM']
+      },
       keyframes : {
         'blur-in': {
             '0%': {

@@ -19,16 +19,16 @@ const TOP_PAGE = gql`
   }
 `;
 
-type TopPageProps = TopPageQuery;
+type TopPageProps = Exclude<TopPageQuery["topPage"], null | undefined>;
 
-const Home: React.ComponentType<TopPageProps> = ({ topPage }: TopPageProps) => {
-  // const { topImage } = topPage;
+const Home: React.ComponentType<TopPageProps> = (props: TopPageProps) => {
+  const { topImage, isVideo } = props;
 
   return (
     <StyleComp>
       <div className={`relative`}>
         {/* TODO : Until we know how to make it work for sources tags without extension, use isVideo as a work-around   */}
-        {topPage?.isVideo ? (
+        {isVideo ? (
           <video
             className={"w-full h-full object-fill"}
             controls={false}
@@ -37,22 +37,20 @@ const Home: React.ComponentType<TopPageProps> = ({ topPage }: TopPageProps) => {
             muted
             poster={"/icons/dry_logo_resized.svg"}
           >
-            <source src={topPage?.topImage?.url} type="video/mp4" />
+            <source src={topImage?.url} type="video/mp4" />
           </video>
         ) : (
           <>
-            {topPage?.topImage?.url && (
-              <picture>
-                <div className="w-full h-full">
-                  <Image
-                    priority
-                    src={topPage?.topImage?.url}
-                    layout="fill"
-                    objectFit={"cover"}
-                    className={"brightness-80"}
-                  />
-                </div>
-              </picture>
+            {topImage?.url && (
+              <div className="w-full min-h-screen">
+                <Image
+                  priority
+                  src={topImage?.url}
+                  layout="fill"
+                  objectFit={"cover"}
+                  className={"brightness-80"}
+                />
+              </div>
             )}
           </>
         )}
@@ -76,10 +74,12 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async () => {
       query: TOP_PAGE,
     });
 
+    if (!data || !data.topPage) {
+      throw new Error("no data");
+    }
+
     return {
-      props: {
-        topPage: data.topPage,
-      },
+      props: data.topPage,
     };
   } catch (error) {
     console.error("error in getStaticProps");

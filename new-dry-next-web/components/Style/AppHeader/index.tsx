@@ -14,9 +14,11 @@ const AppHeader: React.ComponentType<AppHeaderProps> = () => {
   };
 
   return (
-    <div className="h-[50px] w-full top-0 fixed z-20 ">
+    <div className="h-[50px] w-full top-0 fixed z-20 bg-brand-theme">
       <div className={"flex justify-between p-2"}>
-        <DryLogo onClick={() => router.push("/")} />
+        <div className="flex content-center justify-between">
+          <DryLogo onClick={() => router.push("/")} />
+        </div>
         {/* for some reasons that I don't understand, how SVG is load has been changed and breaks the display
         now we apply width specifically here   */}
         <img
@@ -41,9 +43,8 @@ const AppHeader: React.ComponentType<AppHeaderProps> = () => {
         </div>
         <img
           src="/icons/globe_icon_resized.svg"
-          style={{ width: 80 }}
           alt=""
-          className={"ornament-xs"}
+          className={"ornament-xs w-20"}
         />
         <div
           className={`hidden lg:flex  items-center  text-center text-[7px] text-black space-x-1`}
