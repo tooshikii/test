@@ -1,26 +1,8 @@
-import { Theme } from "@mui/material";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
 import React from "react";
 
 interface DryLogoProps {
   onClick: () => void;
 }
-
-const useStyle = makeStyles((theme: Theme) =>
-  createStyles({
-    dryIcon: {
-      // Fall back for safari
-      height: 34,
-      minHeight: 34,
-      transition: `fill 0.5s ease-out`,
-      cursor: "pointer",
-      "&:hover": {
-        fill: "white",
-      },
-    },
-  })
-);
 
 /**
  * NOTE :
@@ -32,13 +14,12 @@ const useStyle = makeStyles((theme: Theme) =>
 const DryLogo: React.ComponentType<DryLogoProps> = ({
   onClick,
 }: DryLogoProps) => {
-  const classes = useStyle();
   return (
     <svg
       viewBox="637 359 90 33"
       role="img"
       xmlns="http://www.w3.org/2000/svg"
-      className={classes.dryIcon}
+      className={"h-8 cursor-pointer hover:fill-white ease-linear  duration-75"}
       onClick={() => onClick()}
     >
       <g

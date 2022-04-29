@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <svg viewBox="312.771 345.58 161.499 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
   <defs>
-    <bx:grid x="0" y="0" width="819.76" height="434.559"/>
+    <bx:grid x="0" y="0" />
   </defs>
   <text transform="matrix(0, -1, 1, 0, 473.269714, 377.525848)" class="st0 st1 st2" style="white-space: pre; fill: rgb(19, 19, 19); font-family: Arial-BoldMT; font-size: 5px; line-height: 8px; perspective-origin: 8.46875px 0px;">030 BERLIN</text>
   <g id="gradient" transform="matrix(1, 0, 0, 1, 16.46106, -69.819855)">
