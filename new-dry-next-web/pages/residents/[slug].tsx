@@ -1,6 +1,4 @@
-import { Theme } from "@mui/material";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import cn from "classnames";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useRouter } from "next/dist/client/router";
 import React, { useLayoutEffect, useState } from "react";
@@ -19,7 +17,6 @@ import {
 } from "../../src/generated/graphql";
 import { EventType } from "../../types/eventType";
 import { DateToDispStr } from "../../utils";
-import cn from "classnames";
 
 type ResidentsProps = MemberDetailsQuery;
 
@@ -50,13 +47,13 @@ const Residents: React.ComponentType<ResidentsProps> = ({
   }
 
   if (!teamMember) {
-    return null
+    return null;
   }
 
   return (
     <StyleComp
       header={{
-        title: teamMember?.name ?  teamMember.name.toUpperCase() : ""
+        title: teamMember?.name ? teamMember.name.toUpperCase() : "",
       }}
     >
       <CommonLayout
@@ -65,7 +62,9 @@ const Residents: React.ComponentType<ResidentsProps> = ({
         contentSection={
           <div>
             <div className="mb-10">
-              <p className="mb-4 text-3xl font-bold">{teamMember && teamMember.name}</p>
+              <p className="mb-4 text-3xl font-bold">
+                {teamMember && teamMember.name}
+              </p>
               <div className={"flex"}>
                 <div>
                   <Carousel
@@ -88,19 +87,17 @@ const Residents: React.ComponentType<ResidentsProps> = ({
                     ))}
                   </Carousel>
                 </div>
-                  {
-                    teamMember && teamMember.bio &&
-
-                <div>
-                  <div
-                    className={"normalizeRichText"}
-                    dangerouslySetInnerHTML={{
-                      __html: teamMember.bio.html,
-                    }}
-                  />
-                  <SnsLinks SnsMap={teamMember.accountLinks} />
-                </div>
-                  }
+                {teamMember && teamMember.bio && (
+                  <div>
+                    <div
+                      className={"normalizeRichText"}
+                      dangerouslySetInnerHTML={{
+                        __html: teamMember.bio.html,
+                      }}
+                    />
+                    <SnsLinks SnsMap={teamMember.accountLinks} />
+                  </div>
+                )}
               </div>
             </div>
             {teamMember.happenings.length > 0 && (

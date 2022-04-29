@@ -1,54 +1,10 @@
-import { Backdrop, Fade, IconButton, Theme, Typography } from "@mui/material";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
-import CloseIcon from "@mui/icons-material/Close";
-import React, { useContext, useEffect, useState } from "react";
-import Link from "../Link";
+import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import React, { useContext } from "react";
+import snsData from "../../public/data/dry_sns_map.json";
+import CloseIcon from "../../public/icons/close.svg";
 import SnsLinks from "../SnsLinks";
 import { BackdropContext } from "./Context";
-import snsData from "../../public/data/dry_sns_map.json";
-
-const useStyle = makeStyles((theme: Theme) =>
-  createStyles({
-    backdrop: {
-      zIndex: theme.zIndex.drawer + 1,
-      alignItems: "start",
-      backgroundColor: "rgba(19,19,19,0.9)",
-    },
-    closeIcon: {
-      position: "absolute",
-      color: "#c3c3c3",
-      top: 0,
-      right: 0,
-      padding: theme.spacing(2),
-      "& svg": {
-        width: "2em",
-        height: "2em",
-      },
-    },
-    menuContainer: {
-      color: "#c3c3c3",
-      margin: theme.spacing(8),
-      marginLeft: "auto",
-      padding: theme.spacing(4),
-      "& > h4": {
-        marginBottom: theme.spacing(1),
-        "&:last-child": {
-          marginBottom: theme.spacing(3),
-        },
-      },
-      "& svg": {
-        fill: "#c3c3c3",
-      },
-    },
-    imprint: {
-      fontSize: "10px",
-      "&>*": {
-        paddingRight: theme.spacing(2),
-      },
-    },
-  })
-);
 
 interface LinkType {
   displayName: string;
@@ -71,60 +27,57 @@ const Links: Array<LinkType> = [
 ];
 
 const MenuBackdrop = () => {
-  const classes = useStyle();
   const { isOpen, setIsOpen } = useContext(BackdropContext);
-  const [fadeOpen, setFadeOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    const id = setTimeout(() => {
-      setFadeOpen(isOpen);
-    }, 200);
-
-    return () => clearTimeout(id);
-  }, [isOpen]);
 
   return (
-    <>
+    <AnimatePresence>
       {isOpen && (
-        <Backdrop open={isOpen} classes={{ root: classes.backdrop }}>
-          <IconButton
-            edge="start"
-            aria-label="menu"
-            size={"medium"}
-            disableRipple={true}
-            className={classes.closeIcon}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className={"  bg-black/50 fixed top-0 right-0 z-50 w-screen h-screen"}
+        >
+          <button
+            className="absolute top-0 right-0 p-4 "
             onClick={() => {
               setIsOpen(false);
             }}
           >
-            <CloseIcon />
-          </IconButton>
-          <Fade in={fadeOpen}>
-            <div className={classes.menuContainer}>
+            <CloseIcon className="w-8 h-8" />
+          </button>
+          <div
+            className={
+              "m-auto max-w-md text-brand-theme text-5xl bold flex justify-center  items-center"
+            }
+          >
+            <div className="flex flex-col min-h-[80vh] ">
               {Links.map((link) => (
-                <Typography variant={"h4"}>
-                  <Link href={`/${link.path}`} onClick={() => setIsOpen(false)}>
-                    {link.displayName}
-                  </Link>
-                </Typography>
-              ))}
-              <SnsLinks SnsMap={snsData} />
-              <div className={classes.imprint}>
-                <Link href={`/imprint`} onClick={() => setIsOpen(false)}>
-                  IMPRINT
+                <Link href={`/${link.path}`} key={link.path} passHref>
+                  <a onClick={() => setIsOpen(false)}>{link.displayName}</a>
                 </Link>
-                <Link
-                  href={`/data-protection`}
-                  onClick={() => setIsOpen(false)}
-                >
-                  DATA PROTECTION
+              ))}
+              <SnsLinks
+                SnsMap={snsData}
+                className={"flex flex-row fill-white"}
+              />
+              <div className={" text-xs"}>
+                <Link href={`/imprint`} passHref>
+                  <a onClick={() => setIsOpen(false)} className={"p-2"}>
+                    IMPRINT
+                  </a>
+                </Link>
+                <Link href={`/data-protection`} passHref>
+                  <a onClick={() => setIsOpen(false)} className={"p-2"}>
+                    DATA PROTECTION
+                  </a>
                 </Link>
               </div>
             </div>
-          </Fade>
-        </Backdrop>
+          </div>
+        </motion.div>
       )}
-    </>
+    </AnimatePresence>
   );
 };
 

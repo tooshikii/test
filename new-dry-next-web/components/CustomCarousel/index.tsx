@@ -1,4 +1,3 @@
-import { Box, useTheme } from "@mui/material";
 import React, { useMemo } from "react";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
@@ -19,27 +18,25 @@ interface CustomCarouselProps {
 const CustomCarousel: React.ComponentType<CustomCarouselProps> = ({
   items,
 }: CustomCarouselProps) => {
-  const theme = useTheme();
   const responsive = useMemo(() => {
-    const { lg, sm } = theme.breakpoints.values;
     return {
       desktop: {
-        breakpoint: { max: 3000, min: lg },
+        breakpoint: { max: 3000, min: 976 },
         items: 4,
       },
       tablet: {
-        breakpoint: { max: lg, min: sm },
+        breakpoint: { max: 976, min: 480 },
         items: 3,
       },
       mobile: {
-        breakpoint: { max: sm, min: 0 },
+        breakpoint: { max: 480, min: 0 },
         items: 1,
       },
     };
-  }, [theme]);
+  }, []);
 
   return (
-    <Box className={"bg-black py-6 relative"}>
+    <div className={"bg-black py-6 relative"}>
       <Carousel
         arrows={false}
         responsive={responsive}
@@ -69,7 +66,7 @@ const CustomCarousel: React.ComponentType<CustomCarouselProps> = ({
           </div>
         ))}
       </Carousel>
-    </Box>
+    </div>
   );
 };
 
