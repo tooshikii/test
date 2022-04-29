@@ -1,8 +1,5 @@
-import { Container, Theme } from "@mui/material";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
-import React from "react";
 import NextImage from "next/image";
+import React from "react";
 import { myLoader } from "../Image";
 
 interface CommonLayoutProps {
@@ -12,38 +9,12 @@ interface CommonLayoutProps {
   contentSection: React.ReactNode;
 }
 
-const useStyle = makeStyles((theme: Theme) =>
-  createStyles({
-    container: {
-      "&>div:nth-child(1)": {
-        flexGrow: 1,
-        flexBasis: "30%",
-      },
-      "&>div:nth-child(2)": {
-        flexGrow: 2,
-        flexBasis: "70%",
-        "&>*:first-child": {
-          marginTop: 0,
-        },
-      },
-      [theme.breakpoints.down('md')]: {
-        flexFlow: "column",
-        // Resize every injected images in content area so that it doesn't break the box
-        "& > .content img": {
-          width: "100%",
-        },
-      },
-    },
-  })
-);
-
 const CommonLayout: React.ComponentType<CommonLayoutProps> = ({
   assetSrc,
   menuSection,
   contentSection,
   videoSrc,
 }: CommonLayoutProps) => {
-  const classes = useStyle();
   return (
     <div>
       {videoSrc && (
@@ -67,12 +38,14 @@ const CommonLayout: React.ComponentType<CommonLayoutProps> = ({
           />
         </div>
       )}
-      <Container>
-        <div className={`${classes.container} my-6 flex`}>
-          <div>{menuSection}</div>
-          <div className={"content"}>{contentSection}</div>
+      <div className="container ">
+        <div className={`my-6 flex  flex-col lg:flex-row`}>
+          <div className="grow">{menuSection}</div>
+          <div className={" grow-[2]  basis-[70%] content"}>
+            {contentSection}
+          </div>
         </div>
-      </Container>
+      </div>
     </div>
   );
 };

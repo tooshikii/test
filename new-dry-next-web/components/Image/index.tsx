@@ -1,5 +1,5 @@
-import React from "react";
 import NextImage, { ImageProps } from "next/image";
+import React from "react";
 
 const getLastPath = (url: string) => {
   if (url.indexOf("/") < 0) {

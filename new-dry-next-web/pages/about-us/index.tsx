@@ -1,9 +1,7 @@
 import { gql } from "@apollo/client";
 import { GetStaticProps } from "next";
-import { useRouter } from "next/dist/client/router";
 import React from "react";
 import CommonLayout from "../../components/CommonLayout";
-import CustomCarousel from "../../components/CustomCarousel";
 import StyleComp from "../../components/Style";
 import TitleWithOrnament from "../../components/TitleWithOrnament";
 import { initializeApollo } from "../../lib/apollo";
