@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="664.125 368.015 35.75 14.97" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="819.76" height="434.559"/>
+  </defs>
+  <g id="Gruppe_183" transform="matrix(1, 0, 0, 1, -28.662048, -1608.163956)">
+    <g id="Gruppe_181" transform="translate(669.827 1952.539)">
+      <path id="Pfad_902" class="st0" d="M22.96,31.12h35.75" style="fill: none; stroke: rgb(1, 2, 2); stroke-width: 0.5px;"/>
+      <path id="Pfad_903" class="st0" d="M34.44,38.61V23.64" style="fill: none; stroke: rgb(1, 2, 2); stroke-width: 0.5px;"/>
+      <g id="Ellipse_32" transform="translate(7.019 3.54)">
+        <circle class="st1" cx="27.14" cy="27.82" r="4.18" style="fill: none;"/>
+        <circle class="st0" cx="27.14" cy="27.82" r="3.93" style="fill: none; stroke: rgb(1, 2, 2); stroke-width: 0.5px;"/>
+      </g>
+      <circle id="Ellipse_33" class="st2" cx="34.3" cy="31.43" r="1.74" style="fill: rgb(1, 2, 2);"/>
+    </g>
+  </g>
+</svg>

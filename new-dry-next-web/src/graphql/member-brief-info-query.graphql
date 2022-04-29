@@ -1,0 +1,9 @@
+  query memberBriefInfoQuery {
+    teamMembers {
+      slug
+      name
+      photos(first: 1) {
+        url(transformation: { image: { resize: { width: 500 } } })
+      }
+    }
+  }

@@ -9,16 +9,43 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.3.11",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/material": "^5.6.3",
+    "@mui/styles": "^5.6.2",
+    "@sendgrid/mail": "^7.4.6",
+    "@svgr/webpack": "^5.5.0",
+    "classnames": "^2.3.1",
+    "deepmerge": "^4.2.2",
+    "graphql": "^15.5.0",
+    "lodash": "^4.17.21",
     "next": "12.1.5",
+    "next-apollo": "^5.0.4",
+    "next-images": "^1.8.1",
     "react": "18.1.0",
-    "react-dom": "18.1.0"
+    "react-dom": "18.1.0",
+    "react-multi-carousel": "2.8.0"
   },
   "devDependencies": {
     "@types/node": "17.0.30",
     "@types/react": "18.0.8",
     "@types/react-dom": "18.0.3",
+    "@types/tailwindcss": "^2.2.1",
+    "@typescript-eslint/eslint-plugin": "^4.25.0",
+    "@typescript-eslint/parser": "^4.25.0",
+    "autoprefixer": "^10.3.1",
     "eslint": "8.14.0",
     "eslint-config-next": "12.1.5",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "postcss": "^8.3.6",
+    "prettier": "^2.3.0",
+    "tailwindcss": "^2.2.7",
     "typescript": "4.6.4"
   }
 }

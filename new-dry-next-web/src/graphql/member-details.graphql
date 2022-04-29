@@ -1,0 +1,21 @@
+  query MemberDetails($slug: String) {
+    teamMember(where: { slug: $slug }) {
+      name
+      bio {
+        html
+      }
+      photos {
+        url(transformation: { image: { resize: { width: 800 } } })
+      }
+      releases
+      mediaIframes
+      accountLinks
+      happenings(first: 5) {
+        title
+        happeningDates
+        locationName
+        eventType
+        slugId
+      }
+    }
+  }

@@ -1,0 +1,1 @@
+export const DateToDispStr = (dateString : string) => new Date(dateString).toLocaleString("en-US", { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });

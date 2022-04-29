@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Ebene_1" x="0px" y="0px" viewBox="10.8 7.38 35.75 14.97" style="enable-background:new 0 0 595.28 841.89;" xmlns="http://www.w3.org/2000/svg">
+  <style type="text/css">
+	.st0{fill:none;stroke:#010202;stroke-width:0.5;}
+	.st1{fill:none;}
+	.st2{fill:#010202;}
+</style>
+  <g id="Gruppe_217" transform="translate(-663.827 -1952.539)">
+    <g id="Gruppe_181" transform="translate(669.827 1952.539)">
+      <path id="Pfad_902" class="st0" d="M4.8,14.87h35.75"/>
+      <path id="Pfad_903" class="st0" d="M22.27,22.35V7.38"/>
+      <g id="Ellipse_32" transform="translate(7.019 3.54)">
+        <circle class="st1" cx="14.98" cy="11.56" r="4.18"/>
+        <circle class="st0" cx="14.98" cy="11.56" r="3.93"/>
+      </g>
+      <circle id="Ellipse_33" class="st2" cx="22.14" cy="15.17" r="1.74"/>
+    </g>
+  </g>
+</svg>

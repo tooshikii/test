@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="312.771 345.58 161.499 32" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <bx:grid x="0" y="0" width="819.76" height="434.559"/>
+  </defs>
+  <text transform="matrix(0, -1, 1, 0, 473.269714, 377.525848)" class="st0 st1 st2" style="white-space: pre; fill: rgb(19, 19, 19); font-family: Arial-BoldMT; font-size: 5px; line-height: 8px; perspective-origin: 8.46875px 0px;">030 BERLIN</text>
+  <g id="gradient" transform="matrix(1, 0, 0, 1, 16.46106, -69.819855)">
+    <linearGradient id="Detail_Gradient_1_" gradientUnits="userSpaceOnUse" x1="94.1982" y1="852.4064" x2="94.1982" y2="851.4064" gradientTransform="matrix(1.959435e-15 32 153 -9.368549e-15 -129968.8594 -2582.9448)">
+      <stop offset="0" style="stop-color:#131313"/>
+      <stop offset="0.655" style="stop-color:#131313;stop-opacity:0.271"/>
+      <stop offset="1" style="stop-color:#808081;stop-opacity:0"/>
+    </linearGradient>
+    <rect id="Detail_Gradient" x="296.31" y="415.4" class="st3" width="153" height="32" style="fill: url(#Detail_Gradient_1_); opacity: 0.855;"/>
+    <path id="star" class="st4" d="M418.18,420.4c0,8.86-1.42,10.84-13,11.2l-31.12,0.16l34.7,0.18c8.3,0.71,9.42,3.16,9.42,11.01 c0-10.16,1.86-11.27,18.76-11.27C420.04,431.68,418.18,430.56,418.18,420.4z" style="fill: rgb(232, 232, 231);"/>
+  </g>
+</svg>

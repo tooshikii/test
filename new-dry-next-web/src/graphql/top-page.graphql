@@ -1,0 +1,8 @@
+  query topPage {
+    topPage(where: { slug: "top-page" }) {
+      topImage {
+        url
+      }
+      isVideo
+    }
+  }

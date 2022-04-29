@@ -1,9 +1,26 @@
+/* ./styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* /Users/tooshikii1/WorkSpace/dry-next-web/public/fonts/DRYCUSTOM-Regular.otf */
+@font-face {
+  font-family: "DRYCUSTOM";
+  src: url("/fonts/DRYCUSTOM-Regular.otf") format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+.text-shadow {
+  text-shadow:1px 1px 1px rgb(0 0 0);
 }
 
 a {
@@ -14,3 +31,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* for normalizing padding first element in injected html  */
+.normalizeRichText > *:first-child{
+  margin-top : 0px
+}
+
+.bandcamp iframe {
+  width: 200px !important;
+  height: 200px !important;
+}
+.mediaWrapper iframe {
+  width: 200px !important;
+}
+
