@@ -1,11 +1,8 @@
-import { Theme } from "@mui/material";
-import createStyles from '@mui/styles/createStyles';
-import makeStyles from '@mui/styles/makeStyles';
+import Head from "next/head";
 import React from "react";
 import MenuBackdrop from "../MenuBackdrop";
 import AppHeader from "./AppHeader";
 import Footer from "./Footer";
-import Head from "next/head";
 
 interface StyleCompProps {
   header?: {
@@ -15,25 +12,12 @@ interface StyleCompProps {
   children: React.ReactNode;
 }
 
-const useStyle = makeStyles((theme: Theme) =>
-  createStyles({
-    rootContainer: {
-      background: theme.palette.background.default,
-    },
-    mainContainer: {
-      marginTop: 50,
-      minHeight: `calc(100vh - ${50}px)`,
-    },
-  })
-);
-
 const StyleComp: React.ComponentType<StyleCompProps> = ({
   children,
   header,
 }: StyleCompProps) => {
-  const classes = useStyle();
   return (
-    <div className={classes.rootContainer}>
+    <div>
       <Head>
         <title>DRY BERLIN {header && `| ${header.title}`}</title>
         <meta
@@ -50,7 +34,9 @@ const StyleComp: React.ComponentType<StyleCompProps> = ({
       <MenuBackdrop />
       <AppHeader />
       <main>
-        <div className={classes.mainContainer}>{children}</div>
+        <div className={"mt-[50px]  min-h-[calc(100vh_- _50px]"}>
+          {children}
+        </div>
       </main>
       <Footer />
     </div>

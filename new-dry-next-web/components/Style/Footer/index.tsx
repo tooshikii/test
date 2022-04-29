@@ -16,9 +16,9 @@ const Footer: React.ComponentType = () => {
             DESIGN BY STEFANO FELICE <br />
           </span>
         </div>
-        <div className={"font-bold"}>
+        <div className={"font-bold flex"}>
           <span className={"pr-1"}>FIND US ON</span>
-          <SnsLinks SnsMap={snsData} className="inline-block"></SnsLinks>
+          <SnsLinks SnsMap={snsData} className="flex"></SnsLinks>
         </div>
       </div>
     </footer>

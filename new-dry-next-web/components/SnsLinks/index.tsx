@@ -37,11 +37,9 @@ const SnsLinks: React.ComponentType<SnsLinksProps> = ({
         const Icon = ICON_MAP[link[0]];
         if (Icon === undefined) return null;
         return (
-          <IconButton edge="start" aria-label="menu" key={link[1]} size="large">
-            <a target={"_blank"} href={link[1]} rel="noreferrer">
+            <a target={"_blank"} className={'h-6 w-6 items-center justify-center '} href={link[1]} rel="noreferrer">
               {Icon}
             </a>
-          </IconButton>
         );
       })}
     </div>

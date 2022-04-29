@@ -41,20 +41,19 @@ const Home: React.ComponentType<TopPageProps> = ({ topPage }: TopPageProps) => {
           </video>
         ) : (
           <>
-          {
-            topPage?.topImage?.url && 
-            <picture>
-              <div className="w-full h-full">
-                <Image
-                  priority
-                  src={topPage?.topImage?.url}
-                  layout="fill"
-                  objectFit={"cover"}
-                  className={"brightness-80"}
-                />
-              </div>
-            </picture>
-          }
+            {topPage?.topImage?.url && (
+              <picture>
+                <div className="w-full h-full">
+                  <Image
+                    priority
+                    src={topPage?.topImage?.url}
+                    layout="fill"
+                    objectFit={"cover"}
+                    className={"brightness-80"}
+                  />
+                </div>
+              </picture>
+            )}
           </>
         )}
         <div className="absolute top-0 flex flex-col items-center w-full py-4 text-white md:items-end md:w-auto md:justify-center md:flex-row md:bottom-0 ">
@@ -85,6 +84,6 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async () => {
   } catch (error) {
     console.error("error in getStaticProps");
     console.error(error);
-    throw error
+    throw error;
   }
 };
