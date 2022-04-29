@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 interface SignUpProps {}
 
@@ -49,7 +49,8 @@ const HTML = `
 
 const SignUp: React.ComponentType<SignUpProps> = (props: SignUpProps) => {
   const [show, setShow] = useState<boolean>(false);
-  useLayoutEffect(() => {
+  const effect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+  effect(() => {
     setShow(true);
   }, []);
 

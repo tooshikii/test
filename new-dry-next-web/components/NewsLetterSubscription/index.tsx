@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 
 const widget = `
 <!-- Begin Mailchimp Signup Form -->
@@ -24,8 +24,9 @@ const widget = `
 
 const NewsLetterSubscription: React.ComponentType = () => {
   const [renderWidget, setRenderWidget] = useState<boolean>(false);
+  const effect = typeof window === "undefined" ? useEffect : useLayoutEffect;
 
-  useLayoutEffect(() => {
+  effect(() => {
     setRenderWidget(true);
   }, []);
 
